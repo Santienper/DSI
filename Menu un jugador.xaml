@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Trabajo_DSI.MainPage"
+    x:Class="Trabajo_DSI.Menu_un_jugador"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Trabajo_DSI"
@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        
+
     </Grid>
 </Page>
