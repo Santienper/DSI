@@ -9,6 +9,51 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.25*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.25*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Background="#fff760" BorderBrush="Black">
+            <TextBlock Text="UN JUGADOR" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Margin="30"/>
+            <Grid Height="578" Background="#89842f" BorderBrush="Black" BorderThickness="1">
+                <ListView Margin="0,0,0,70" Background="LightGoldenrodYellow">
+                    <Grid Background="Gray" Width="400" Height="200" Margin="20">
+                        <Button Content="NUEVA PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <Grid Background="Gray" Width="400" Height="200" Margin="20">
+                        <Button Content="CARGAR PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <Grid Background="Gray" Width="400" Height="200" Margin="20">
+                        <Button Content="CAMPAÑA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </ListView>
+                <Button Content="VOLVER" Background="Gray" HorizontalAlignment="Stretch" Margin="20,0,20,20" VerticalAlignment="Bottom" Foreground="Black" FontWeight="Black" FontSize="15"/>
+            </Grid>
+        </StackPanel>
 
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="3.25*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
+                <Image Source="/Assets/LockScreenLogo.scale-200.png"/>
+                <Grid BorderBrush="Black" BorderThickness="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.9*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="NOMBRE DE USUARIO" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="1" Text="#CODIGO DE AMIGO" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"/>
+                </Grid>
+            </StackPanel>
+            
+        </Grid>
+        
+        
     </Grid>
 </Page>
