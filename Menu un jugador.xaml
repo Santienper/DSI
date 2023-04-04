@@ -20,7 +20,7 @@
             <Grid Height="860" Background="#89842f" BorderBrush="Black" BorderThickness="1">
                 <ListView Margin="0,0,0,110" Background="#89842f" FocusVisualSecondaryBrush="Yellow">
                     <Grid Background="Gray" Width="400" Height="270" Margin="60,40,60,5">
-                        <Image Source="/Assets/nueva partida iron man.jpg" Stretch="Fill"/>
+                        <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
                         <Button Content="NUEVA PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Gray"/>
                     </Grid>
                     <Grid Background="Gray" Width="400" Height="270" Margin="60,5,60,5">
