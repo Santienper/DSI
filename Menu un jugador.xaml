@@ -17,19 +17,20 @@
         
         <StackPanel Background="#fff760" BorderBrush="Black">
             <TextBlock Text="UN JUGADOR" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Margin="30"/>
-            <Grid Height="578" Background="#89842f" BorderBrush="Black" BorderThickness="1">
-                <ListView Margin="0,0,0,70" Background="LightGoldenrodYellow">
-                    <Grid Background="Gray" Width="400" Height="200" Margin="20">
-                        <Button Content="NUEVA PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+            <Grid Height="860" Background="#89842f" BorderBrush="Black" BorderThickness="1">
+                <ListView Margin="0,0,0,110" Background="#89842f" FocusVisualSecondaryBrush="Yellow">
+                    <Grid Background="Gray" Width="400" Height="270" Margin="60,40,60,5">
+                        <Image Source="/Assets/nueva partida iron man.jpg" Stretch="Fill"/>
+                        <Button Content="NUEVA PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Gray"/>
                     </Grid>
-                    <Grid Background="Gray" Width="400" Height="200" Margin="20">
+                    <Grid Background="Gray" Width="400" Height="270" Margin="60,5,60,5">
                         <Button Content="CARGAR PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                     </Grid>
-                    <Grid Background="Gray" Width="400" Height="200" Margin="20">
+                    <Grid Background="Gray" Width="400" Height="270" Margin="60,5,60,5">
                         <Button Content="CAMPAÑA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                     </Grid>
                 </ListView>
-                <Button Content="VOLVER" Background="Gray" HorizontalAlignment="Stretch" Margin="20,0,20,20" VerticalAlignment="Bottom" Foreground="Black" FontWeight="Black" FontSize="15"/>
+                <Button Content="VOLVER" Background="LightGray" HorizontalAlignment="Stretch" Margin="20,40,20,20" VerticalAlignment="Bottom" Foreground="Black" FontWeight="Black" FontSize="30" Height="70"/>
             </Grid>
         </StackPanel>
 
@@ -42,18 +43,50 @@
 
             <StackPanel Orientation="Horizontal" BorderBrush="White" BorderThickness="1">
                 <Image Source="/Assets/LockScreenLogo.scale-200.png"/>
-                <Grid BorderBrush="Black" BorderThickness="1">
+                <Grid BorderBrush="Black" BorderThickness="1" Height="181" Width="345">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition Height="0.9*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="NOMBRE DE USUARIO" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="NOMBRE DE USUARIO" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"/>
                     <TextBlock Grid.Row="1" Text="#CODIGO DE AMIGO" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"/>
                 </Grid>
             </StackPanel>
-            
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="50,0,0,0" HorizontalAlignment="Stretch">
+                <Button Margin="20">
+                    <Button.Content>
+                        <Image Source="/Assets/Square44x44Logo.targetsize-24_altform-unplated.png"/>
+                    </Button.Content>
+                </Button>
+                <Button Margin="5,20,20,20">
+                    <Button.Content>
+                        <Image Source="/Assets/Square44x44Logo.targetsize-24_altform-unplated.png"/>
+                    </Button.Content>
+                </Button>
+                <Button Margin="5,20,20,20">
+                    <Button.Content>
+                        <Image Source="/Assets/Square44x44Logo.targetsize-24_altform-unplated.png"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+
+            <Grid Grid.Row="2" Background="LightGoldenrodYellow" BorderBrush="Black" BorderThickness="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Text="sbgouergbksierbgsliuergerñog" FontSize="30" Foreground="Black" TextWrapping="Wrap"/>
+                </Grid>
+
+                <Button Grid.Row="1" Background="#fff760" Foreground="Black" Content="JUGAR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="40" FontWeight="Bold" Margin="40, 20" BorderBrush="Black" BorderThickness="1"/>
+            </Grid>
+
+
         </Grid>
-        
-        
+
+
     </Grid>
 </Page>
