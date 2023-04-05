@@ -8,44 +8,73 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <Style TargetType="Pivot" x:Key="Menu">
-            <Setter Property="Title" Value="CONFIGURACIÓN"/>
+        <Style x:Key="PivotHeaderItemStyle1" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Aqua"/>
+            <Setter Property="Margin" Value="85,0,85,0"/>
         </Style>
+
     </Page.Resources>
 
     <Grid>
-        <Pivot Style="{StaticResource Menu}" SelectedIndex="2" HorizontalAlignment="Right">
-            <PivotItem Header="Controles">
+        <Button Width="80" Height="80" Background="Gray" VerticalAlignment="Top">
+            <Button.Content>
+                <Image Source="\Assets\Flechita atrás.png" Width="50" Height="50"/>
+            </Button.Content>
+        </Button>
+        <TextBox Text="CONFIGURACIÓN" HorizontalAlignment="Center" FontSize="40" Height="70" VerticalAlignment="Top" Margin="0,25,0,0" BorderBrush="Transparent"/>
+        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Black">
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="CONTROLES" Style="{StaticResource PivotHeaderItemStyle1}"/>
+                </PivotItem.Header>
                 <TextBlock Text="all emails go here." />
             </PivotItem>
-            <PivotItem Header="Audio">
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="AUDIO" Style="{StaticResource PivotHeaderItemStyle1}"/>
+                </PivotItem.Header>
                 <TextBlock Text="unread emails go here." />
             </PivotItem>
-            <PivotItem Header="Gráficos" Background="Gray">
+
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="GRÁFICOS" Style="{StaticResource PivotHeaderItemStyle1}"/>
+                </PivotItem.Header>
+
                 <ListView>
-                    <Grid Height="900" Width="1470" Background="Transparent">
-                        <StackPanel HorizontalAlignment="Center" Width="800">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                <TextBox Text="RESOLUCIÓN" Background="Transparent" BorderBrush="Transparent" Margin="0,0,500,0"/>
-                                <SplitButton Width="200">
-                                    <SplitButton.Flyout>
-                                        <Flyout Placement="Bottom">
-                                            <TextBox Text="1920 * 1080" />
-                                        </Flyout>
-                                    </SplitButton.Flyout>
-                                </SplitButton>
-                            </StackPanel>
-                            
+
+                    <StackPanel HorizontalAlignment="Center" Width="800" Margin="300,50,110,50">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
+                            <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="0,0,410,0"/>
+                            <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
+                                <ComboBoxItem Content="1920 * 1080"/>
+                                <ComboBoxItem Content="xD"/>
+                            </ComboBox>
                         </StackPanel>
-                        
-                        
-                    </Grid>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
+                            <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="0,0,410,0"/>
+                            <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
+                                <ComboBoxItem Content="1920 * 1080"/>
+                                <ComboBoxItem Content="xD"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
                 </ListView>
             </PivotItem>
-            <PivotItem Header="Juego">
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="JUEGO" Style="{StaticResource PivotHeaderItemStyle1}"/>
+                </PivotItem.Header>
+
                 <TextBlock Text="urgent emails go here." />
             </PivotItem>
-            <PivotItem Header="Accesibilidad">
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="ACCESIBILIDAD" Style="{StaticResource PivotHeaderItemStyle1}"/>
+                </PivotItem.Header>
+
                 <TextBlock Text="urgent emails go here." />
             </PivotItem>
         </Pivot>
