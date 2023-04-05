@@ -8,6 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Style x:Key="ButtonImage" TargetType="Grid">
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.25*"/>
@@ -24,7 +31,7 @@
             <StackPanel Background="LightGray" BorderBrush="Black" BorderThickness="1">
                 <TextBlock  Text="Título" FontSize="100" HorizontalAlignment="Center"/>
             </StackPanel>
-            <Grid Grid.Row="1" Background="Gray" VerticalAlignment="Stretch">
+            <Grid Grid.Row="1" Style="{StaticResource ButtonImage}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="4*"/>
@@ -37,7 +44,7 @@
                                 <RowDefinition Height="5*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Image Source="/Assets/Square150x150Logo.scale-200.png" Stretch="Fill"/>
+                            <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
                             <TextBlock Grid.Row="1" Text="UN JUGADOR (vs CPU)" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
                         </Grid>
                     </Button.Content>
@@ -49,12 +56,12 @@
                                 <RowDefinition Height="5*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Image Source="/Assets/Square150x150Logo.scale-200.png" Stretch="Fill"/>
+                            <Image Source="/Assets/Images/vengadores multijugador.jpg" Stretch="Fill"/>
                             <TextBlock Grid.Row="1" Text="MULTIJUGADOR" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Button Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 15, 20, 10" Background="LightGray" Content="SALIR" FontSize="50" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
+                <Button Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 5, 20, 10" Background="LightGray" Content="SALIR" FontSize="50" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
             </Grid>
         </Grid>
 

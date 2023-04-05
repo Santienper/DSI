@@ -19,10 +19,18 @@
             <TextBlock Text="UN JUGADOR" Foreground="Black" HorizontalAlignment="Center" FontSize="60" Margin="30"/>
             <Grid Height="860" Background="#89842f" BorderBrush="Black" BorderThickness="1">
                 <ListView Margin="0,0,0,110" Background="#89842f" FocusVisualSecondaryBrush="Yellow">
-                    <Grid Background="Gray" Width="400" Height="270" Margin="60,40,60,5">
-                        <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
-                        <Button Content="NUEVA PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Gray"/>
-                    </Grid>
+                    <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 20" Padding="0">
+                        <Button.Content>
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
+                                <TextBlock Grid.Row="1" Text="UN JUGADOR (vs CPU)" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
                     <Grid Background="Gray" Width="400" Height="270" Margin="60,5,60,5">
                         <Button Content="CARGAR PARTIDA" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                     </Grid>
