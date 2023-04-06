@@ -27,7 +27,7 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
-                                <TextBlock Grid.Row="1" Text="UN JUGADOR (vs CPU)" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Grid.Row="1" Text="NUEVA PARTIDA" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
                             </Grid>
                         </Button.Content>
                     </Button>

@@ -42,10 +42,9 @@
                 </PivotItem.Header>
 
                 <ListView>
-
                     <StackPanel HorizontalAlignment="Center" Width="800" Margin="300,50,110,50">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
-                            <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="0,0,410,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50" Margin="20">
+                            <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="100,0,20,0" VerticalAlignment="Center"/>
                             <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
                                 <ComboBoxItem Content="1920 * 1080"/>
                                 <ComboBoxItem Content="xD"/>
@@ -53,11 +52,8 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
-                            <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="0,0,410,0"/>
-                            <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
-                                <ComboBoxItem Content="1920 * 1080"/>
-                                <ComboBoxItem Content="xD"/>
-                            </ComboBox>
+                            <TextBlock Text="PANTALLA COMPLETA" FontSize="25" Margin="100,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <CheckBox/>
                         </StackPanel>
                     </StackPanel>
 
