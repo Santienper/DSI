@@ -12,7 +12,6 @@
             <Setter Property="Foreground" Value="Aqua"/>
             <Setter Property="Margin" Value="85,0,85,0"/>
         </Style>
-
     </Page.Resources>
 
     <Grid>
@@ -35,26 +34,118 @@
                 </PivotItem.Header>
                 <TextBlock Text="unread emails go here." />
             </PivotItem>
-
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="GRÁFICOS" Style="{StaticResource PivotHeaderItemStyle1}"/>
                 </PivotItem.Header>
-
                 <ListView>
-                    <StackPanel HorizontalAlignment="Center" Width="800" Margin="300,50,110,50">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50" Margin="20">
+                    <StackPanel Width="800" Margin="300,50,110,50" VerticalAlignment="Stretch">
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="RESOLUCIÓN" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="1920 X 1080"/>
+                                <ComboBoxItem Content="xD"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="PANTALLA COMPLETA" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <CheckBox Grid.Column="1" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="CALIDAD GENERAL" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="1920 X 1080"/>
+                                <ComboBoxItem Content="xD"/>
+                            </ComboBox>
+                        </Grid>
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="VSYNC" FontSize="25" VerticalAlignment="Center"/>
+                            <CheckBox Grid.Column="1" Width="0"/>
+
+                        </Grid>
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="CALIDAD SOMBREADO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="MEDIA"/>
+                                <ComboBoxItem Content="BAJA"/>
+                                <ComboBoxItem Content="ALTA"/>
+                            </ComboBox>
+                        </Grid>
+                        
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="CALIDAD DE TEXTURAS" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="MEDIA"/>
+                                <ComboBoxItem Content="BAJA"/>
+                                <ComboBoxItem Content="ALTA"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="ANTIALIASING" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="SSAA"/>
+                                <ComboBoxItem Content="MSAA"/>
+                                <ComboBoxItem Content="FXAA"/>
+                                <ComboBoxItem Content="FFAA"/>
+                            </ComboBox>
+                        </Grid>
+
+
+
+
+
+                        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50" Margin="20">
                             <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="100,0,20,0" VerticalAlignment="Center"/>
                             <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
-                                <ComboBoxItem Content="1920 * 1080"/>
+                                <ComboBoxItem Content="1920 X 1080"/>
                                 <ComboBoxItem Content="xD"/>
                             </ComboBox>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
-                            <TextBlock Text="PANTALLA COMPLETA" FontSize="25" Margin="100,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <CheckBox/>
+                            <TextBlock Text="PANTALLA COMPLETA" FontSize="25" Margin="23,0,0,0"/>
+                            <CheckBox Margin="25,0,0,0"/>
                         </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
+                            <TextBlock Text="CALIDAD GENERAL" FontSize="25" Margin="50,0,0,0"/>
+                            <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
+                                <ComboBoxItem Content="MEDIA"/>
+                                <ComboBoxItem Content="BAJA"/>
+                                <ComboBoxItem Content="ALTA"/>
+                            </ComboBox>
+                        </StackPanel>-->
+
                     </StackPanel>
 
                 </ListView>
