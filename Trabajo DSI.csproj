@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Flechita atrás.png" />
+    <Content Include="Assets\Images\Fondo configuracion.jpg" />
     <Content Include="Assets\Images\nueva partida iron man.jpg" />
     <Content Include="Assets\Images\vengadores multijugador.jpg" />
     <Content Include="Properties\Default.rd.xml" />

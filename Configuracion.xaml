@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     <Page.Resources>
         <Style x:Key="PivotHeaderItemStyle1" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Aqua"/>
@@ -15,44 +16,110 @@
     </Page.Resources>
 
     <Grid>
-        <Button Width="80" Height="80" Background="Gray" VerticalAlignment="Top">
+        <Image Source="Assets/Images/Fondo configuracion.jpg" Height="1000" Stretch="Fill"/>
+        <Button Width="80" Height="80" Background="LightGray" VerticalAlignment="Top">
             <Button.Content>
-                <Image Source="\Assets\Flechita atrás.png" Width="50" Height="50"/>
+                <Image Source="Assets/Flechita atrás.png" Width="50" Height="50" Stretch="Fill"/>
             </Button.Content>
         </Button>
-        <TextBox Text="CONFIGURACIÓN" HorizontalAlignment="Center" FontSize="40" Height="70" VerticalAlignment="Top" Margin="0,25,0,0" BorderBrush="Transparent"/>
-        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Black">
+        <TextBlock Text="CONFIGURACIÓN" HorizontalAlignment="Center" FontSize="40" Height="70" VerticalAlignment="Top" Margin="0,25,0,0" />
+        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Transparent" UseSystemFocusVisuals="False">
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="CONTROLES" Style="{StaticResource PivotHeaderItemStyle1}"/>
                 </PivotItem.Header>
-                <TextBlock Text="all emails go here." />
+                <Viewbox>
+                    <StackPanel Width="900">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="SENSIBLIDAD JOYSTICK IZQUIERDO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <Slider Background="White" Grid.Column="1" Maximum="10" Minimum="0" Value="9" Width="400" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="SENSIBLIDAD JOYSTICK DERECHO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <Slider Background="White" Grid.Column="1" Maximum="10" Minimum="0" Value="3" Width="400" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="EJE INVERTIDO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ToggleSwitch Grid.Column="1" OffContent="NO" OnContent="SI" Margin="25,0,0,0"/>
+                        </Grid>
+                        <Grid Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="VIBRACIÓN" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ToggleSwitch Grid.Column="1" OffContent="NO" OnContent="SI" Margin="25,0,0,0" IsOn="True" />
+                        </Grid>
+                    </StackPanel>
+                </Viewbox>
             </PivotItem>
+
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="AUDIO" Style="{StaticResource PivotHeaderItemStyle1}"/>
                 </PivotItem.Header>
-                <TextBlock Text="unread emails go here." />
+                <Viewbox>
+                    <StackPanel Width="900">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="VOLUMEN MÚSICA" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <Slider Background="White" Grid.Column="1" Maximum="10" Minimum="0" Value="9" Width="400" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="VOLUMEN EFECTOS DE SONIDO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <Slider Background="White" Grid.Column="1" Maximum="10" Minimum="0" Value="3" Width="400" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="VOLUMEN EFECTOS DE LAS VOCES" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <Slider Background="White" Grid.Column="1" Maximum="10" Minimum="0" Value="7" Width="400" VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>
+                </Viewbox>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="GRÁFICOS" Style="{StaticResource PivotHeaderItemStyle1}"/>
                 </PivotItem.Header>
-                <ListView>
-                    <StackPanel Width="800" Margin="300,50,110,50" VerticalAlignment="Stretch">
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                <Viewbox>
+                    <StackPanel Width="900">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="RESOLUCIÓN" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
-                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
-                                <ComboBoxItem Content="1920 X 1080"/>
-                                <ComboBoxItem Content="xD"/>
+                            <ComboBox  VerticalAlignment="Center" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="1920 x 1080"/>
+                                <ComboBoxItem Content="1280 x 1024"/>
+                                <ComboBoxItem Content="1280 x 720"/>
+                                <ComboBoxItem Content="800 x 600"/>
                             </ComboBox>
                         </Grid>
 
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition/>
@@ -60,27 +127,41 @@
                             <TextBlock Text="PANTALLA COMPLETA" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
                             <CheckBox Grid.Column="1" VerticalAlignment="Center"/>
                         </Grid>
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="CALIDAD GENERAL" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
-                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
-                                <ComboBoxItem Content="1920 X 1080"/>
-                                <ComboBoxItem Content="xD"/>
+                            <ComboBox  VerticalAlignment="Center" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="MEDIA"/>
+                                <ComboBoxItem Content="BAJA"/>
+                                <ComboBoxItem Content="ALTA"/>
                             </ComboBox>
                         </Grid>
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="VSYNC" FontSize="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="VSYNC" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,40,0"/>
                             <CheckBox Grid.Column="1" Width="0"/>
-
                         </Grid>
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                        <Grid Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="LÍMITE DE FPS" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,40,0"/>
+                            <ComboBox  SelectedIndex="0" Grid.Column="2" VerticalAlignment="Center">
+                                <ComboBoxItem Content="30"/>
+                                <ComboBoxItem Content="60"/>
+                                <ComboBoxItem Content="120"/>
+                                <ComboBoxItem Content="244"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition/>
@@ -92,11 +173,11 @@
                                 <ComboBoxItem Content="ALTA"/>
                             </ComboBox>
                         </Grid>
-                        
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="CALIDAD DE TEXTURAS" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
                             <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
@@ -106,7 +187,7 @@
                             </ComboBox>
                         </Grid>
 
-                        <Grid  Height="100" HorizontalAlignment="Stretch">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition/>
@@ -119,50 +200,78 @@
                                 <ComboBoxItem Content="FFAA"/>
                             </ComboBox>
                         </Grid>
-
-
-
-
-
-                        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50" Margin="20">
-                            <TextBlock Text="RESOLUCIÓN" FontSize="25" Margin="100,0,20,0" VerticalAlignment="Center"/>
-                            <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
-                                <ComboBoxItem Content="1920 X 1080"/>
-                                <ComboBoxItem Content="xD"/>
-                            </ComboBox>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
-                            <TextBlock Text="PANTALLA COMPLETA" FontSize="25" Margin="23,0,0,0"/>
-                            <CheckBox Margin="25,0,0,0"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="50">
-                            <TextBlock Text="CALIDAD GENERAL" FontSize="25" Margin="50,0,0,0"/>
-                            <ComboBox Width="190" VerticalAlignment="Center" HorizontalAlignment="Right" SelectedIndex="0">
-                                <ComboBoxItem Content="MEDIA"/>
-                                <ComboBoxItem Content="BAJA"/>
-                                <ComboBoxItem Content="ALTA"/>
-                            </ComboBox>
-                        </StackPanel>-->
-
                     </StackPanel>
-
-                </ListView>
+                </Viewbox>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="JUEGO" Style="{StaticResource PivotHeaderItemStyle1}"/>
                 </PivotItem.Header>
+                <Viewbox>
+                    <StackPanel Width="900">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="DIFICULTAD DEL JUEGO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="NORMAL"/>
+                                <ComboBoxItem Content="FÁCIL"/>
+                                <ComboBoxItem Content="DIFÍCIL"/>
+                            </ComboBox>
+                        </Grid>
 
-                <TextBlock Text="urgent emails go here." />
+                    </StackPanel>
+                </Viewbox>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="ACCESIBILIDAD" Style="{StaticResource PivotHeaderItemStyle1}"/>
                 </PivotItem.Header>
+                <Viewbox>
+                    <StackPanel Width="900">
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="IDIOMA DEL JUEGO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="ESPAÑOL"/>
+                                <ComboBoxItem Content="ENGLISH"/>
+                            </ComboBox>
+                        </Grid>
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="SUBTÍTULOS" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <RadioButton Grid.Column="1"/>
+                        </Grid>
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="IDIOMA DE LOS SUBTÍTULOS" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                                <ComboBoxItem Content="ESPAÑOL"/>
+                                <ComboBoxItem Content="ENGLISH"/>
+                            </ComboBox>
+                        </Grid>
+                        <Grid  Height="60" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="MODO PARA DALTÓNICOS" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
+                            <RadioButton Grid.Column="1"/>
 
-                <TextBlock Text="urgent emails go here." />
+                        </Grid>
+                    </StackPanel>
+                </Viewbox>
             </PivotItem>
         </Pivot>
     </Grid>
