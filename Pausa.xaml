@@ -9,15 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid Background="LightGray" Margin="400,130" BorderBrush="Black">
-            <StackPanel Margin="100,92">
-                <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="REANUDAR" FontSize="40" Margin="0,0,0,30"/>
-                <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="GUARDAR"  FontSize="40" Margin="0,0,0,30"/>
-                <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="VOLVER A EMPEZAR" FontSize="40" Margin="0,0,0,30"/>
-                <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="OPCIONES"  FontSize="40" Margin="0,0,0,30"/>
-                <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="RENDIRSE" FontSize="40" Margin="0,0,0,30"/>
-                <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="SALIR AL MENÚ" FontSize="40" Margin="0,0,0,30"/>
-            </StackPanel>
-        </Grid>
+        <Viewbox>
+            <Grid Background="LightGray" Margin="400,90" BorderBrush="Black">
+                <StackPanel Margin="100,92">
+                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="REANUDAR" FontSize="40" Margin="0,0,0,30"/>
+                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="GUARDAR"  FontSize="40" Margin="0,0,0,30"/>
+                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="VOLVER A EMPEZAR" FontSize="40" Margin="0,0,0,30"/>
+                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="OPCIONES"  FontSize="40" Margin="0,0,0,30"/>
+                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="RENDIRSE" FontSize="40" Margin="0,0,0,30"/>
+                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="SALIR AL MENÚ" FontSize="40" Margin="0,0,0,30"/>
+                </StackPanel>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Page>

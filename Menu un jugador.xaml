@@ -121,7 +121,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/Assets/LockScreenLogo.scale-200.png"/>
+                <Image Source="/Assets/icon User.png" Stretch="Fill"/>
 
                 <Grid Grid.Column="1" BorderBrush="Black" BorderThickness="1">
                     <Grid.RowDefinitions>

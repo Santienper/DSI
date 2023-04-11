@@ -78,7 +78,7 @@
                     </Grid>
                 </ListViewItem>
             </ListView>
-            <Button Content="VOLVER" Grid.Row="2" HorizontalAlignment="Stretch" Background="Gray" Foreground="Black" Height="80" Margin="15"  FontSize="40" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
+            <Button Content="SALIR" Grid.Row="2" HorizontalAlignment="Stretch" Background="Gray" Foreground="Black" Height="80" Margin="15"  FontSize="40" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
         </Grid>
 
 
