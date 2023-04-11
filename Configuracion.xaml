@@ -16,7 +16,7 @@
     </Page.Resources>
 
     <Grid>
-        <Image Source="Assets/Images/Fondo configuracion.jpg" Height="1000" Stretch="Fill"/>
+        <Image Source="Assets/Images/Fondo configuracion.jpg" Height="1000" Stretch="Fill" Opacity="0.48"/>
         <Button Width="80" Height="80" Background="LightGray" VerticalAlignment="Top">
             <Button.Content>
                 <Image Source="Assets/Flechita atrás.png" Width="50" Height="50" Stretch="Fill"/>
@@ -167,7 +167,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="CALIDAD SOMBREADO" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
-                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                            <ComboBox  VerticalAlignment="Center" SelectedIndex="0" Grid.Column="1">
                                 <ComboBoxItem Content="MEDIA"/>
                                 <ComboBoxItem Content="BAJA"/>
                                 <ComboBoxItem Content="ALTA"/>
@@ -180,7 +180,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="CALIDAD DE TEXTURAS" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
-                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                            <ComboBox  VerticalAlignment="Center" SelectedIndex="0" Grid.Column="1">
                                 <ComboBoxItem Content="MEDIA"/>
                                 <ComboBoxItem Content="BAJA"/>
                                 <ComboBoxItem Content="ALTA"/>
@@ -193,7 +193,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="ANTIALIASING" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"/>
-                            <ComboBox  VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" Grid.Column="1">
+                            <ComboBox  VerticalAlignment="Center" SelectedIndex="0" Grid.Column="1">
                                 <ComboBoxItem Content="SSAA"/>
                                 <ComboBoxItem Content="MSAA"/>
                                 <ComboBoxItem Content="FXAA"/>

@@ -22,48 +22,65 @@
             <ColumnDefinition Width="1.25*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid BorderBrush="Black" BorderThickness="1">
+        <Grid BorderBrush="Black" BorderThickness="1" Background="LightGray">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
+            <TextBlock  Text="TÍTULO" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold"/>
+            <ListView 
+                    IsFocusEngagementEnabled="True"
+                    IsItemClickEnabled="True"
+                    Grid.Row="1"
+                    Background="Gray">
 
-            <StackPanel Background="LightGray" BorderBrush="Black" BorderThickness="1">
-                <TextBlock  Text="Título" FontSize="100" HorizontalAlignment="Center"/>
-            </StackPanel>
-            <Grid Grid.Row="1" Style="{StaticResource ButtonImage}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 20" Padding="0">
-                    <Button.Content>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
-                            <TextBlock Grid.Row="1" Text="UN JUGADOR (vs CPU)" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
-                        </Grid>
-                    </Button.Content>
-                </Button>
-                <Button Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10">
-                    <Button.Content>
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF96FF6A"  Margin="0" BorderBrush="Black" BorderThickness="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="/Assets/Images/vengadores multijugador.jpg" Stretch="Fill"/>
-                            <TextBlock Grid.Row="1" Text="MULTIJUGADOR" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold"/>
-                        </Grid>
-                    </Button.Content>
-                </Button>
-                <Button Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 5, 20, 10" Background="LightGray" Content="SALIR" FontSize="50" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
-            </Grid>
+                <ListViewItem>
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
+                                    <TextBlock Grid.Row="1" Text="UN JUGADOR (vs CPU)" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem>
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#96ff6a"  BorderBrush="Black" BorderThickness="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="/Assets/Images/vengadores multijugador.jpg" Stretch="Fill"/>
+                                    <TextBlock Grid.Row="1" Text="MULTIJUGADOR" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </ListViewItem>
+            </ListView>
+            <Button Content="VOLVER" Grid.Row="2" HorizontalAlignment="Stretch" Background="Gray" Foreground="Black" Height="80" Margin="15"  FontSize="40" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
         </Grid>
+
 
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
@@ -73,7 +90,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="2" Background="LightGray" BorderBrush="Black" BorderThickness="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="3.5*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
@@ -81,7 +98,7 @@
                     <TextBlock Text="sbgouergbksierbgsliuergerñog" FontSize="30" Foreground="Black" TextWrapping="Wrap"/>
                 </Grid>
 
-                <Button Grid.Row="1" Background="#FF57bcf9" Content="EMPEZAR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="40" FontWeight="Bold" Margin="40, 20" BorderBrush="Black" BorderThickness="1"/>
+                <Button Grid.Row="1" Background="#57bcf9" Content="EMPEZAR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="40" FontWeight="Bold" Margin="40, 20" BorderBrush="Black" BorderThickness="1" Foreground="Black"/>
             </Grid>
 
             <Grid BorderBrush="Black" BorderThickness="1">
@@ -119,7 +136,6 @@
                     </Button.Content>
                 </Button>
             </StackPanel>
-                
         </Grid>
     </Grid>
 </Page>
