@@ -146,9 +146,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Flechita atrás.png" />
+    <Content Include="Assets\icon IronMan.png" />
+    <Content Include="Assets\Icon Media.png" />
+    <Content Include="Assets\icon User.png" />
     <Content Include="Assets\Images\Fondo configuracion.jpg" />
     <Content Include="Assets\Images\nueva partida iron man.jpg" />
     <Content Include="Assets\Images\vengadores multijugador.jpg" />
+    <Content Include="Assets\Notification.png" />
+    <Content Include="Assets\Settings.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
