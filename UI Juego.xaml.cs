@@ -26,5 +26,14 @@ namespace Trabajo_DSI
         {
             this.InitializeComponent();
         }
+
+        
+
+        public ButtonEntity[] Lista = {
+            new ButtonEntity("Assets/Notification.png"),
+            new ButtonEntity("Assets/Flechita atrás.png"),
+            new ButtonEntity("Assets/icon Media.png"),
+            new ButtonEntity("Assets/Settings.png")
+        };
     }
 }
