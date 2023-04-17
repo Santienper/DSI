@@ -7,17 +7,45 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <Style x:Key="PausePanel" TargetType="Rectangle">
+            <Setter Property="Fill" Value="#092133"/>
+            <Setter Property="StrokeThickness" Value="3"/>
+            <Setter Property="RadiusX" Value="30"/>
+            <Setter Property="RadiusY" Value="30"/>
+            <Setter Property="Stroke" Value="DarkCyan"/>
+        </Style>
+        <Style x:Key="ButtonStack" TargetType="Button">
+            <Setter Property="BorderThickness" Value="5" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="DarkBlue" Offset="0.75"/>
+                        <GradientStop Color="#3c70e8"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="0,0,0,30"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontFamily" Value="Consolas Bold"/>
+        </Style>
+    </Page.Resources>
     <Grid>
+        <Viewbox Grid.Row="1" >
+            <Rectangle Width="250" Height="300" Margin="0,20,0,20" Style="{StaticResource PausePanel}"/>
+        </Viewbox>
         <Viewbox>
-            <Grid Background="LightGray" Margin="400,90" BorderBrush="Black">
+            <Grid Margin="400,90" BorderBrush="Black">
                 <StackPanel Margin="100,92">
-                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="REANUDAR" FontSize="40" Margin="0,0,0,30"/>
-                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="GUARDAR"  FontSize="40" Margin="0,0,0,30"/>
-                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="VOLVER A EMPEZAR" FontSize="40" Margin="0,0,0,30"/>
-                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="OPCIONES"  FontSize="40" Margin="0,0,0,30"/>
-                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="RENDIRSE" FontSize="40" Margin="0,0,0,30"/>
-                    <Button Foreground="Black" BorderBrush="Black" HorizontalAlignment="Stretch" Content="SALIR AL MENÚ" FontSize="40" Margin="0,0,0,30"/>
+                    <Button Content="Reanudar" Style="{StaticResource ButtonStack}"/>
+                    <Button Content="GUARDAR" Style="{StaticResource ButtonStack}" />
+                    <Button Content="VOLVER A EMPEZAR" Style="{StaticResource ButtonStack}"/>
+                    <Button Content="OPCIONES"  Style="{StaticResource ButtonStack}"/>
+                    <Button  Content="RENDIRSE" Style="{StaticResource ButtonStack}"/>
+                    <Button Content="SALIR AL MENÚ" Style="{StaticResource ButtonStack}"/>
                 </StackPanel>
             </Grid>
         </Viewbox>
