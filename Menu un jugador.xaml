@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+   
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.25*"/>
@@ -109,7 +109,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock Text="Descripción del modo de juego" FontSize="30" Foreground="Black" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="Description" Text="Descripción del modo de juego" FontSize="30" Foreground="Black" TextWrapping="Wrap"/>
                 </Grid>
 
                 <Button Grid.Row="1" Background="Yellow" Content="JUGAR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="40" FontWeight="Bold" Margin="40, 20" BorderBrush="Black" BorderThickness="1" Foreground="Black"/>
