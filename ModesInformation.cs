@@ -14,6 +14,8 @@ namespace Trabajo_DSI
         public string Nombre { get; set; }
         public string Imagen { get; set; }
 
+        public string Color { get; set; }
+
 
         public Mode() { }
     }
@@ -25,15 +27,17 @@ namespace Trabajo_DSI
             {
                 Id=0,
                 Nombre="UN JUGADOR (vs CPU)",
-                Explicacion=" Modo de un jugador Enfrentante en solitario al modo Campaña.",
+                Explicacion="MODO DE UN JUGADOR\nEnfrentante en solitario al modo Campaña.",
                 Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Color="#FFFFF760",
             },
             new Mode()
             {
                 Id=1,
                 Nombre="MULTIJUGADOR",
-                Explicacion=" Modo multijugador Enfrentante a jugadores de todo el mundo o con amigos.",
+                Explicacion="MODO MULTIJUGADOR\nEnfrentante a jugadores de todo el mundo o con amigos.",
                 Imagen="Assets\\Images\\vengadores multijugador.jpg",
+                Color="#96ff6a",
             }
         };
 

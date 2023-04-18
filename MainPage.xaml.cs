@@ -25,9 +25,13 @@ namespace Trabajo_DSI
     public sealed partial class MainPage : Page
     {
         public ObservableCollection<Mode> ListaModos { get; } = new ObservableCollection<Mode>();
+        bool seleccionado;
+        int modoSel;
         public MainPage()
         {
             this.InitializeComponent();
+            seleccionado = false;
+            modoSel = -1;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -45,6 +49,26 @@ namespace Trabajo_DSI
         {
             Mode Sel = e.ClickedItem as Mode;
             Description.Text = Sel.Explicacion;
+            modoSel = Sel.Id;
+            seleccionado = true;
+            BotonEmpezar.IsEnabled = true;
+        }
+
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            if (modoSel == 0)
+            {
+                Frame.Navigate(typeof(Menu_un_jugador));
+            }
+            else
+            {
+                Frame.Navigate(typeof(Menu_multijugador));
+            }
+        }
+
+        private void ButtonOptions_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Configuracion));
         }
     }
 }
