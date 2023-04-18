@@ -157,6 +157,7 @@
     <Content Include="Assets\Images\vengadores multijugador.jpg" />
     <Content Include="Assets\Notification.png" />
     <Content Include="Assets\Settings.png" />
+    <Content Include="Assets\pause.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

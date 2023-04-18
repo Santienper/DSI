@@ -26,5 +26,20 @@ namespace Trabajo_DSI
         {
             this.InitializeComponent();
         }
+
+        private void ReanudeButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.TryGoBack();
+        }
+
+        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Configuracion));
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

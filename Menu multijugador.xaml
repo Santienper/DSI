@@ -7,7 +7,64 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Name="BackButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="Gray" Offset="0.75"/>
+                        <GradientStop Color="DarkGray"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Name="PlayButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="LightGreen" Offset="0.75"/>
+                        <GradientStop Color="#FF27F405"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
 
+        <DataTemplate x:DataType="local:ViewMode"
+                      x:Key="GridViewMode">
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
+                    <Button.Content>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Bind Color}"  BorderBrush="Black" BorderThickness="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{x:Bind Imagen}" Stretch="Fill"/>
+                            <TextBlock Grid.Row="1" Text="{x:Bind Nombre}" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.25*"/>
@@ -26,9 +83,11 @@
                     IsFocusEngagementEnabled="True"
                     IsItemClickEnabled="True"
                     Grid.Row="1"
+                    ItemsSource="{x:Bind ListaModos}"
+                    ItemTemplate="{StaticResource GridViewMode}"
                     Background="DarkGreen">
 
-                <ListViewItem>
+                <!--<ListViewItem>
                     <Grid HorizontalAlignment="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4*"/>
@@ -90,12 +149,11 @@
                             </Button.Content>
                         </Button>
                     </Grid>
-                </ListViewItem>
+                </ListViewItem>-->
             </ListView>
-            <Button Content="VOLVER" Grid.Row="2" HorizontalAlignment="Stretch" Background="Gray" Foreground="Black" Height="80" Margin="15"  FontSize="40" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
+            <Button Content="VOLVER" Grid.Row="2" Style="{StaticResource BackButton}" Margin="13" Click="BackButton_Click"/>
         </Grid>
-
-
+        
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -108,11 +166,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock Text="Descripción del modo de juego" FontSize="30" Foreground="Black" TextWrapping="Wrap"/>
+                <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="3" CornerRadius="15">
+                    <TextBlock x:Name="Description" Text="Por favor, selecciona un modo para multijugador" FontSize="30" Foreground="Black" TextWrapping="Wrap" Margin="20" TextAlignment="Center"/>
                 </Grid>
 
-                <Button Grid.Row="1" Background="LightGreen" Content="JUGAR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="40" FontWeight="Bold" Margin="40, 20" BorderBrush="Black" BorderThickness="1" Foreground="Black"/>
+                <Button Grid.Row="1" Content="JUGAR" Style="{StaticResource PlayButton}" Margin="13" Click="PlayButton_Click" IsEnabled="False"/>
+
             </Grid>
 
             <Grid BorderBrush="Black" BorderThickness="1">

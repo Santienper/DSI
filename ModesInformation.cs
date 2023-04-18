@@ -23,6 +23,7 @@ namespace Trabajo_DSI
     {
         public static List<Mode> Modes = new List<Mode>()
         {
+            //modos del menu principal
             new Mode()
             {
                 Id=0,
@@ -38,12 +39,85 @@ namespace Trabajo_DSI
                 Explicacion="MODO MULTIJUGADOR\nEnfrentante a jugadores de todo el mundo o con amigos.",
                 Imagen="Assets\\Images\\vengadores multijugador.jpg",
                 Color="#96ff6a",
-            }
+            },
+
+            //Modos del menu de un jugador
+            
+            new Mode()
+            {
+                Id=2,
+                Nombre="NUEVA PARTIDA",
+                Explicacion="",
+                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Color="#FFFFF760",
+            },
+            new Mode()
+            {
+                Id=3,
+                Nombre="CARGAR PARTIDA",
+                Explicacion="",
+                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Color="#FFFFF760",
+            },
+            new Mode() 
+            {
+                Id=4,
+                Nombre="MODO CAMPAÑA",
+                Explicacion="",
+                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Color="#FFFFF760",
+            },
+           
+
+            //Modos del menu multijugaodr
+            new Mode()
+            {
+                Id=5,
+                Nombre="",
+                Explicacion="",
+                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Color="#96ff6a",
+            },
+            new Mode()
+            {
+                Id=6,
+                Nombre="",
+                Explicacion="",
+                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Color="#96ff6a",
+            },
         };
 
-        public static IList<Mode> GetAllModes()
+        public static IList<Mode> GetPrincipalModes() //recoge SOLO los modos del menu principal
         {
-            return Modes;
+            List<Mode> principalModes = new List<Mode>();
+
+            for(int i = 0; i < 2; i++)
+            {
+                principalModes.Add(Modes[i]);
+            }
+            return principalModes;
+        }
+
+        public static IList<Mode> OnePlayerModes() //recoge SOLO los modos del menu de un jugador
+        {
+            List<Mode> playerModes = new List<Mode>();
+
+            for (int i = 2; i < 5; i++)
+            {
+                playerModes.Add(Modes[i]);
+            }
+            return playerModes;
+        }
+        public static IList<Mode> MultiplayerModes() //recoge SOLO los modos del menu multijugador
+        {
+            List<Mode> multiplayerModes = new List<Mode>();
+
+            for (int i = 5; i < 7; i++)
+            {
+                multiplayerModes.Add(Modes[i]);
+            }
+            return multiplayerModes;
         }
     }
     

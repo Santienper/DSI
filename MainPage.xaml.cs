@@ -37,7 +37,7 @@ namespace Trabajo_DSI
         {
             // Cosntruye las listas de ModelView a partir de la lista Modelo 
             if (ListaModos != null)
-                foreach (Mode modo in ModesInformation.GetAllModes())
+                foreach (Mode modo in ModesInformation.GetPrincipalModes())
                 {
                     ViewMode VMode = new ViewMode(modo);
                     ListaModos.Add(VMode);
@@ -69,6 +69,11 @@ namespace Trabajo_DSI
         private void ButtonOptions_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Configuracion));
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
         }
     }
 }
