@@ -93,7 +93,8 @@
                     ItemsSource="{x:Bind ListaModos}"
                     ItemTemplate="{StaticResource GridViewMode}"
                     Grid.Row="1"
-                    Background="Gray"/>
+                    Background="Gray"
+                    TabIndex="0"/>
             <!--ListViewItem>
                     <Grid HorizontalAlignment="Center">
                         <Grid.RowDefinitions>

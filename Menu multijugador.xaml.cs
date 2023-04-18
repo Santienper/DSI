@@ -24,6 +24,7 @@ namespace Trabajo_DSI
     public sealed partial class Menu_multijugador : Page
     {
         public ObservableCollection<Mode> ListaModos { get; } = new ObservableCollection<Mode>();
+        bool seleccionado;
         int modoSel = -1;
         public Menu_multijugador()
         {
@@ -50,6 +51,15 @@ namespace Trabajo_DSI
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(UI_Juego));
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Mode Sel = e.ClickedItem as Mode;
+            Description.Text = Sel.Explicacion;
+            modoSel = Sel.Id;
+            seleccionado = true;
+            BotonJugar.IsEnabled = true;
         }
     }
 }
