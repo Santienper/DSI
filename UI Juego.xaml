@@ -109,7 +109,7 @@
                            
                             <Image Grid.Row="1" Source="Assets/icon User.png" Stretch="Fill"/>
                             <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0,0,2,0">
-                                <ProgressBar  Margin="10" Maximum="100" Value="45"/>
+                                <ProgressBar Margin="10" Maximum="100" Value="45"/>
                             </Border>
                             
                             <Border Grid.Row="3" BorderBrush="Black" BorderThickness="0,2,2,0">
