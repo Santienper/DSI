@@ -27,18 +27,45 @@ namespace Trabajo_DSI
             this.InitializeComponent();
         }
 
-        
+        public Unidad[] Unidades = { };
 
-        public ButtonEntity[] Lista = {
-            new ButtonEntity("Assets/Notification.png"),
-            new ButtonEntity("Assets/Flechita atrás.png"),
-            new ButtonEntity("Assets/icon Media.png"),
-            new ButtonEntity("Assets/Settings.png")
-        };
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            createEntity("Casa", 50, 100);
+            base.OnNavigatedTo(e);
+        }
 
         private void PauseBottom_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Pausa));
+        }
+
+        private void Entity_KeyDown(object sender, KeyRoutedEventArgs e) {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            Button a = sender as Button;
+            List<Unidad> accs = new List<Unidad>();
+            foreach(string id in Unidad.Unidades[a.Tag as string].Lista) {
+                accs.Add(Unidad.Unidades[id]);
+            }
+            Acciones.ItemsSource = accs;
+        }
+
+        private void createEntity(string id, int x, int y) {
+            Unidad un = Unidad.Unidades[id];
+            Image Imagen = new Image(); Imagen.Source = un.Source;
+            Button Boton = new Button(); Imagen.Width = Imagen.Height = 30;
+            Boton.Content = Imagen; Boton.Click += Button_Click; Boton.Tag = id;
+            ContentControl ControladorContenido = new ContentControl();
+            ControladorContenido.Content = Boton; ControladorContenido.IsTabStop = true; ControladorContenido.UseSystemFocusVisuals = true;
+            ControladorContenido.KeyDown += Entity_KeyDown;
+            CompositeTransform Transformacion = new CompositeTransform();
+            Transformacion.TranslateX = 0.0; Transformacion.TranslateY = 0.0; Transformacion.Rotation = 0;
+            ControladorContenido.RenderTransform = Transformacion;
+            Mundo.Children.Add(ControladorContenido);
+            ControladorContenido.SetValue(Canvas.LeftProperty, x);
+            ControladorContenido.SetValue(Canvas.TopProperty, y);
         }
     }
 }

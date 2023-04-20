@@ -18,7 +18,7 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
+                <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0" >
                     <Button.Content>
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Bind Color}"  BorderBrush="Black" BorderThickness="1">
                             <Grid.RowDefinitions>

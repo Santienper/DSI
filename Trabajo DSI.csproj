@@ -119,7 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ButtonEntity.cs" />
+    <Compile Include="Unidad.cs" />
     <Compile Include="Configuracion.xaml.cs">
       <DependentUpon>Configuracion.xaml</DependentUpon>
     </Compile>
@@ -148,16 +148,22 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\casa.jpg" />
     <Content Include="Assets\Flechita atrás.png" />
+    <Content Include="Assets\funky heroina.jpg" />
     <Content Include="Assets\icon IronMan.png" />
     <Content Include="Assets\Icon Media.png" />
     <Content Include="Assets\icon User.png" />
     <Content Include="Assets\Images\Fondo configuracion.jpg" />
     <Content Include="Assets\Images\nueva partida iron man.jpg" />
     <Content Include="Assets\Images\vengadores multijugador.jpg" />
+    <Content Include="Assets\map.jpg" />
     <Content Include="Assets\Notification.png" />
+    <Content Include="Assets\oveja.jpg" />
     <Content Include="Assets\Settings.png" />
     <Content Include="Assets\pause.png" />
+    <Content Include="Assets\soldado.jpg" />
+    <Content Include="Assets\superheroes hq.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

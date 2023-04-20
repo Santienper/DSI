@@ -12,6 +12,7 @@
         <Style x:Key="PivotHeaderItemStyle1" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Aqua"/>
             <Setter Property="Margin" Value="85,0,85,0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
     </Page.Resources>
 
