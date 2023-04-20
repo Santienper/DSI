@@ -23,7 +23,7 @@
                 <RowDefinition Height="2.5*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled" IsTabStop="True">
                 <Grid>
                     <Image Source="Assets/map.jpg" Rotation="45" AllowDrop="True" DragOver="Map_DragOver" Drop="Map_Drop"/>
                     <Canvas x:Name="Mundo">
@@ -32,7 +32,7 @@
                     </Canvas>
                 </Grid>
             </ScrollViewer>
-            <Button x:Name="PauseBottom" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="80" Height="80" Click="PauseBottom_Click">
+            <Button x:Name="PauseBottom" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="90" Height="90" Click="PauseBottom_Click">
                 <Button.Content>
                     <Image Source="/Assets/pause.png" Stretch="Fill"/>
                 </Button.Content>
@@ -45,9 +45,11 @@
                         <ColumnDefinition Width="0.6*"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-
-                    <Image Source="Assets/map.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
-
+                    <Border BorderBrush="LightCoral" BorderThickness="15">
+                        <Image Source="Assets/map.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+                    </Border>
+                   
+                   
                     <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2,0">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -61,17 +63,30 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="0,2">
+                            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2,2,0,0">
                                 <Grid>
-                                    <TextBlock Text="300" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="20"/>
-                                    <TextBlock Text="/2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Margin="20"/>
+                                    <TextBlock Text="300" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="10"/>
+                                    <TextBlock Text="/2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Margin="10"/>
                                 </Grid>
                             </Border>
-                            <TextBlock Grid.Column="1" Text="200" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="20"/>
-                            <TextBlock Grid.Column="2" Text="/1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Margin="20"/>
-                            <TextBlock Grid.Column="1" Grid.Row="2" Text="100" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="20"/>
-                            <TextBlock Grid.Column="2" Grid.Row="2" Text="/1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Margin="20"/>
-                            <TextBlock Grid.Column="1" Grid.Row="3" Text="14/25" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="20"/>
+                            <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="2,0,0,0">
+                                <Grid >
+                                    <TextBlock Text="200" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="10"/>
+                                    <TextBlock Text="/1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Margin="10"/>
+                                </Grid>
+                            </Border>
+
+                            <Border Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness="2,2,0,0">
+                                <Grid>
+                                    <TextBlock Grid.Column="1" Grid.Row="3" Text="100" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="10"/>
+                                    <TextBlock Grid.Column="2" Grid.Row="3" Text="/1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Margin="10"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="3" BorderBrush="Black" BorderThickness="2,2,0,0">
+                                <Grid>
+                                    <TextBlock Grid.Column="1" Grid.Row="3" Text="14/25" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30" Margin="10"/>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Border>
 
@@ -83,15 +98,23 @@
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0.4*"/>
+                                <RowDefinition Height="0.38*"/>
                                 <RowDefinition Height="0.7*"/>
                                 <RowDefinition Height="0.2*"/>
                                 <RowDefinition Height="0.2*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="CIUDADANO" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Margin="10"/>
-                            <Image Grid.Row="1" Source="Assets/Settings.png"/>
-                            <ProgressBar Grid.Row="2" Margin="10,10,10,0" Maximum="100" Value="45"/>
-                            <TextBlock Grid.Row="3" Margin="10 ,0,10,15" Text="45/100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Border BorderBrush="Black" BorderThickness="0,0,2,0">
+                                <TextBlock Text="CIUDADANO" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Margin="4"/>
+                            </Border>
+                           
+                            <Image Grid.Row="1" Source="Assets/icon User.png" Stretch="Fill"/>
+                            <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0,0,2,0">
+                                <ProgressBar  Margin="10" Maximum="100" Value="45"/>
+                            </Border>
+                            
+                            <Border Grid.Row="3" BorderBrush="Black" BorderThickness="0,2,2,0">
+                                <TextBlock Margin="5" Text="45/100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
                         </Grid>
                         <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,2,0">
                             <GridView ItemsSource="{x:Bind Unidades}" Margin="10">

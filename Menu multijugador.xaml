@@ -49,8 +49,8 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
-                    <Button.Content>
+                <ContentControl Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
+                    <ContentControl.Content>
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Bind Color}"  BorderBrush="Black" BorderThickness="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5*"/>
@@ -59,8 +59,8 @@
                             <Image Source="{x:Bind Imagen}" Stretch="Fill"/>
                             <TextBlock Grid.Row="1" Text="{x:Bind Nombre}" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
                         </Grid>
-                    </Button.Content>
-                </Button>
+                    </ContentControl.Content>
+                </ContentControl>
             </Grid>
         </DataTemplate>
 

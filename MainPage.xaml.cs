@@ -48,22 +48,16 @@ namespace Trabajo_DSI
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Mode Sel = e.ClickedItem as Mode;
-            Description.Text = Sel.Explicacion;
             modoSel = Sel.Id;
+            Description.Text = Sel.Explicacion;
             seleccionado = true;
             BotonEmpezar.IsEnabled = true;
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            if (modoSel == 0)
-            {
-                Frame.Navigate(typeof(Menu_un_jugador));
-            }
-            else
-            {
-                Frame.Navigate(typeof(Menu_multijugador));
-            }
+            if (modoSel == 0) Frame.Navigate(typeof(Menu_un_jugador));
+            else Frame.Navigate(typeof(Menu_multijugador));
         }
 
         private void ButtonOptions_Click(object sender, RoutedEventArgs e)
