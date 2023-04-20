@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     RequestedTheme="Light">
     <Page.Resources>
-        <!--<StaticResource x:Key="Lista"/>-->
+        <StaticResource ResourceKey="Lista" x:Key="Lista"/>
         <DataTemplate x:Key="GridView2">
             
         </DataTemplate>
@@ -29,6 +29,16 @@
                     <ColumnDefinition Width="0.6*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+
+                <Grid Width="300" Height="300" RenderTransformOrigin="0.5,0.5" Margin="100,-96,218,100" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                    <Grid.RenderTransform>
+                        <CompositeTransform Rotation="45"/>
+                    </Grid.RenderTransform>
+
+                    <Border BorderBrush="Black" BorderThickness="2,0">
+                        <Rectangle Fill="AliceBlue"/>
+                    </Border>
+                </Grid>
 
                 <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2,0">
                     <Grid>
@@ -76,11 +86,11 @@
                         <TextBlock Grid.Row="3" Margin="10 ,0,10,15" Text="45/100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Grid>
                     <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,2,0">
-                        <GridView ItemsSource="{Binding Source=Lista}">
+                        <GridView ItemsSource="{x:Bind Lista}" Margin="10">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="local:ButtonEntity">
-                                    <TextBlock Text="a"/>
-                                    <!--<Image Source="{x:Bind Source}" Width="20" Height="20"/>-->
+                                    <!--<TextBlock Text="{Binding Path=Source}"/>-->
+                                    <Image Source="{Binding Path=Source}" Width="20" Height="20"/>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
