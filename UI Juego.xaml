@@ -25,10 +25,10 @@
             </Grid.RowDefinitions>
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled">
                 <Grid>
-                    <Image Source="Assets/map.jpg" Rotation="45"/>
+                    <Image Source="Assets/map.jpg" Rotation="45" AllowDrop="True" DragOver="Map_DragOver" Drop="Map_Drop"/>
                     <Canvas x:Name="Mundo">
                         
-                        <Image Source="Assets/icon IronMan.png" Margin="50" Width="20" Height="20"/>
+                        <!--<Image Source="Assets/icon IronMan.png" Margin="50" Width="20" Height="20"/>-->
                     </Canvas>
                 </Grid>
             </ScrollViewer>
@@ -105,11 +105,11 @@
                         </Border>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <GridView x:Name="Acciones" Margin="10">
+                        <GridView x:Name="Acciones" Margin="10" CanDragItems="True" DragItemsStarting="Acciones_DragItemsStarting">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="local:Unidad">
                                     <!--<TextBlock Text="{Binding Path=Source}"/>-->
-                                    <Image Source="{Binding Path=Source}" Width="20" Height="20"/>
+                                    <Image Source="{Binding Path=Source}" Width="30" Height="30"/>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>

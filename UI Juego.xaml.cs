@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -15,15 +16,12 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Trabajo_DSI
-{
+namespace Trabajo_DSI {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class UI_Juego : Page
-    {
-        public UI_Juego()
-        {
+    public sealed partial class UI_Juego : Page {
+        public UI_Juego() {
             this.InitializeComponent();
         }
 
@@ -34,8 +32,7 @@ namespace Trabajo_DSI
             base.OnNavigatedTo(e);
         }
 
-        private void PauseBottom_Click(object sender, RoutedEventArgs e)
-        {
+        private void PauseBottom_Click(object sender, RoutedEventArgs e) {
             Frame.Navigate(typeof(Pausa));
         }
 
@@ -52,7 +49,7 @@ namespace Trabajo_DSI
             Acciones.ItemsSource = accs;
         }
 
-        private void createEntity(string id, int x, int y) {
+        private void createEntity(string id, double x, double y) {
             Unidad un = Unidad.Unidades[id];
             Image Imagen = new Image(); Imagen.Source = un.Source;
             Button Boton = new Button(); Imagen.Width = Imagen.Height = 30;
@@ -66,6 +63,22 @@ namespace Trabajo_DSI
             Mundo.Children.Add(ControladorContenido);
             ControladorContenido.SetValue(Canvas.LeftProperty, x);
             ControladorContenido.SetValue(Canvas.TopProperty, y);
+        }
+
+        private void Acciones_DragItemsStarting(object sender, DragItemsStartingEventArgs e) {
+            Unidad un = e.Items[0] as Unidad;
+            e.Data.SetText(un.id);
+        }
+
+        private void Map_DragOver(object sender, DragEventArgs e) {
+            e.AcceptedOperation = DataPackageOperation.Copy;
+        }
+
+        private async void Map_Drop(object sender, DragEventArgs e) {
+            if(e.DataView.Contains(StandardDataFormats.Text)) {
+                Point punto = e.GetPosition(Mundo);
+                createEntity(await e.DataView.GetTextAsync(), punto.X, punto.Y);
+            }
         }
     }
 }
