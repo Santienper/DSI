@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,12 +21,14 @@ namespace Trabajo_DSI {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class UI_Juego : Page {
+    public sealed partial class UI_Juego : Page, INotifyPropertyChanged {
+        public event PropertyChangedEventHandler PropertyChanged;
         public UI_Juego() {
             this.InitializeComponent();
         }
 
-        public Unidad[] Unidades = { };
+        public InstanciaUnidad[] Unidades = { };
+        public InstanciaUnidad selected { get; set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             createEntity("Casa", 50, 100);
@@ -42,18 +45,21 @@ namespace Trabajo_DSI {
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             Button a = sender as Button;
+            selected = a.Tag as InstanciaUnidad;
             List<Unidad> accs = new List<Unidad>();
-            foreach(string id in Unidad.Unidades[a.Tag as string].Lista) {
+            foreach(string id in Unidad.Unidades[selected.id].Lista) {
                 accs.Add(Unidad.Unidades[id]);
             }
             Acciones.ItemsSource = accs;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(selected)));
         }
 
         private void createEntity(string id, double x, double y) {
             Unidad un = Unidad.Unidades[id];
             Image Imagen = new Image(); Imagen.Source = un.Source;
             Button Boton = new Button(); Imagen.Width = Imagen.Height = 30;
-            Boton.Content = Imagen; Boton.Click += Button_Click; Boton.Tag = id;
+            Boton.Content = Imagen; Boton.Click += Button_Click;
+            Boton.Tag = new InstanciaUnidad(id);
             ContentControl ControladorContenido = new ContentControl();
             ControladorContenido.Content = Boton; ControladorContenido.IsTabStop = true; ControladorContenido.UseSystemFocusVisuals = true;
             ControladorContenido.KeyDown += Entity_KeyDown;
