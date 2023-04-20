@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +23,43 @@ namespace Trabajo_DSI
     /// </summary>
     public sealed partial class Menu_multijugador : Page
     {
+        public ObservableCollection<Mode> ListaModos { get; } = new ObservableCollection<Mode>();
+        bool seleccionado;
+        int modoSel = -1;
         public Menu_multijugador()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // Cosntruye las listas de ModelView a partir de la lista Modelo 
+            if (ListaModos != null)
+                foreach (Mode modo in ModesInformation.MultiplayerModes())
+                {
+                    ViewMode VMode = new ViewMode(modo);
+                    ListaModos.Add(VMode);
+                }
+            base.OnNavigatedTo(e);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.TryGoBack();
+        }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(UI_Juego));
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Mode Sel = e.ClickedItem as Mode;
+            Description.Text = Sel.Explicacion;
+            modoSel = Sel.Id;
+            seleccionado = true;
+            BotonJugar.IsEnabled = true;
         }
     }
 }

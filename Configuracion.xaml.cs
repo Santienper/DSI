@@ -26,5 +26,12 @@ namespace Trabajo_DSI
         {
             this.InitializeComponent();
         }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            App.TryGoBack();
+        }
+
+       
     }
 }

@@ -9,10 +9,67 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
+        
+        <DataTemplate x:DataType="local:ViewMode"
+                      x:Key="GridViewMode">
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
+                    <Button.Content>
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Bind Color}"  BorderBrush="Black" BorderThickness="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{x:Bind Imagen}" Stretch="Fill"/>
+                            <TextBlock Grid.Row="1" Text="{x:Bind Nombre}" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </DataTemplate>
+        
         <Style x:Key="ButtonImage" TargetType="Grid">
             <Setter Property="Background" Value="Gray"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
         </Style>
+        <Style x:Name="ExitButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="Gray" Offset="0.75"/>
+                        <GradientStop Color="DarkGray"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style x:Name="StartButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#57bcf9" Offset="0.75"/>
+                        <GradientStop Color="#FF3B3BB9"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+       
     </Page.Resources>
 
     <Grid>
@@ -32,10 +89,13 @@
             <ListView 
                     IsFocusEngagementEnabled="True"
                     IsItemClickEnabled="True"
+                    ItemClick="ListView_ItemClick"
+                    ItemsSource="{x:Bind ListaModos}"
+                    ItemTemplate="{StaticResource GridViewMode}"
                     Grid.Row="1"
-                    Background="Gray">
-
-                <ListViewItem>
+                    Background="Gray"
+                    TabIndex="0"/>
+            <!--ListViewItem>
                     <Grid HorizontalAlignment="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4*"/>
@@ -77,8 +137,15 @@
                         </Button>
                     </Grid>
                 </ListViewItem>
-            </ListView>
-            <Button Content="SALIR" Grid.Row="2" HorizontalAlignment="Stretch" Background="Gray" Foreground="Black" Height="80" Margin="15"  FontSize="40" FontWeight="Bold" BorderBrush="Black" BorderThickness="1"/>
+            </ListView>-->
+            <Button Content="SALIR" Grid.Row="2" Margin="13" Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Gray" Offset="0.75"/>
+                        <GradientStop Color="#FF5C5353"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </Grid>
 
 
@@ -95,10 +162,10 @@
                 </Grid.RowDefinitions>
 
                 <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock Text="Descripción del modo de juego" FontSize="30" Foreground="Black" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="Description" Text="Por favor, selecciona un modo de juego" FontSize="30" Foreground="Black" TextWrapping="Wrap" Margin="20" TextAlignment="Center"/>
                 </Grid>
 
-                <Button Grid.Row="1" Background="#57bcf9" Content="EMPEZAR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="40" FontWeight="Bold" Margin="40, 20" BorderBrush="Black" BorderThickness="1" Foreground="Black"/>
+                <Button x:Name="BotonEmpezar" Grid.Row="1" Content="EMPEZAR" Margin="13" Style="{StaticResource StartButton}" Click="ButtonStart_Click" IsEnabled="False"/>
             </Grid>
 
             <Grid BorderBrush="Black" BorderThickness="1">
@@ -130,7 +197,7 @@
                         <Image Source="/Assets/Notification.png"/>
                     </Button.Content>
                 </Button>
-                <Button Margin="5,20,20,20">
+                <Button Margin="5,20,20,20" Click="ButtonOptions_Click">
                     <Button.Content>
                         <Image Source="/Assets/Settings.png"/>
                     </Button.Content>

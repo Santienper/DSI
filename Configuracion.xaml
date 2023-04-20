@@ -17,7 +17,7 @@
 
     <Grid>
         <Image Source="Assets/Images/Fondo configuracion.jpg" Height="1000" Stretch="Fill" Opacity="0.48"/>
-        <Button Width="80" Height="80" Background="LightGray" VerticalAlignment="Top">
+        <Button Width="80" Height="80" Background="LightGray" VerticalAlignment="Top" Click="ButtonBack_Click">
             <Button.Content>
                 <Image Source="Assets/Flechita atrás.png" Width="50" Height="50" Stretch="Fill"/>
             </Button.Content>

@@ -132,6 +132,7 @@
     <Compile Include="Menu un jugador.xaml.cs">
       <DependentUpon>Menu un jugador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModesInformation.cs" />
     <Compile Include="Pausa.xaml.cs">
       <DependentUpon>Pausa.xaml</DependentUpon>
     </Compile>
@@ -139,6 +140,7 @@
     <Compile Include="UI Juego.xaml.cs">
       <DependentUpon>UI Juego.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewMode.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -155,6 +157,7 @@
     <Content Include="Assets\Images\vengadores multijugador.jpg" />
     <Content Include="Assets\Notification.png" />
     <Content Include="Assets\Settings.png" />
+    <Content Include="Assets\pause.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

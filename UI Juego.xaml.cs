@@ -35,5 +35,10 @@ namespace Trabajo_DSI
             new ButtonEntity("Assets/icon Media.png"),
             new ButtonEntity("Assets/Settings.png")
         };
+
+        private void PauseBottom_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Pausa));
+        }
     }
 }
