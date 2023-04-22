@@ -34,8 +34,9 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Viewbox Grid.Row="1" >
-            <Rectangle Width="250" Height="300" Margin="0,20,0,20" Style="{StaticResource PausePanel}"/>
+        <Image Source="Assets/Images/SpiderVersePause.jpg" Stretch="Fill" Opacity="0.5"/>
+        <Viewbox Grid.Row="1">
+            <Rectangle Width="250" Height="300" Margin="0,20,0,20" Style="{StaticResource PausePanel}" Opacity="0.7"/>
         </Viewbox>
         <Viewbox>
             <Grid Margin="400,90" BorderBrush="Black">

@@ -23,6 +23,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="20"/>
         </Style>
         <Style x:Name="PlayButton" TargetType="Button">
             <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -39,6 +40,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="20"/>
         </Style>
 
         <DataTemplate x:DataType="local:ViewMode"

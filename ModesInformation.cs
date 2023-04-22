@@ -14,7 +14,6 @@ namespace Trabajo_DSI
         public string Nombre { get; set; }
         public string Imagen { get; set; }
         public string Color { get; set; }
-
         public Mode() { }
     }
     public class ModesInformation
@@ -46,7 +45,7 @@ namespace Trabajo_DSI
                 Id=2,
                 Nombre="NUEVA PARTIDA",
                 Explicacion="Empieza una nueva batalla desde el principio contra una CPU.",
-                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Imagen="Assets\\Images\\CapAmericaReflexivo.jpg",
                 Color="#FFFFF760",
             },
             new Mode()
@@ -54,7 +53,7 @@ namespace Trabajo_DSI
                 Id=3,
                 Nombre="CARGAR PARTIDA",
                 Explicacion="Continúa con la batalla contra la CPU desde un punto de guardado.",
-                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Imagen="Assets\\Images\\SpidermanHuye.jpg",
                 Color="#FFFFF760",
             },
             new Mode() 
@@ -62,7 +61,7 @@ namespace Trabajo_DSI
                 Id=4,
                 Nombre="MODO CAMPAÑA",
                 Explicacion="Emprende una increíble aventura a través de distintas misiones y niveles.",
-                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Imagen="Assets\\Images\\AvengersRobots.jpg",
                 Color="#FFFFF760",
             },
 
@@ -72,7 +71,7 @@ namespace Trabajo_DSI
                 Id=5,
                 Nombre="MODO ONLINE",
                 Explicacion="Empieza una batalla con jugadores de todo el mundo",
-                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Imagen="Assets\\Images\\avengersPeleando.jpg",
                 Color="#96ff6a",
             },
             new Mode()
@@ -80,7 +79,7 @@ namespace Trabajo_DSI
                 Id=6,
                 Nombre="MODO CON AMIGOS",
                 Explicacion="Combate con tus amigos a través de una clave.",
-                Imagen="Assets\\Images\\nueva partida iron man.jpg",
+                Imagen="Assets\\Images\\CapAmericaVsIronMan.jpg",
                 Color="#96ff6a",
             },
         };

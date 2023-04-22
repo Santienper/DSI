@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        
         <DataTemplate x:DataType="local:ViewMode"
                       x:Key="GridViewMode">
             <Grid HorizontalAlignment="Center">
@@ -52,6 +51,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="20"/>
         </Style>
         <Style x:Name="StartButton" TargetType="Button">
             <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -68,34 +68,35 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="20"/>
         </Style>
        
     </Page.Resources>
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.25*"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="1.25*"/>
         </Grid.ColumnDefinitions>
-
+        <Image Source="Assets/Images/CityImage.jpg" Grid.Column="1" Grid.ColumnSpan="3" Stretch="Fill"/>
         <Grid BorderBrush="Black" BorderThickness="1" Background="LightGray">
             <Grid.RowDefinitions>
                 <RowDefinition Height="140"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <TextBlock  Text="TÍTULO" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold"/>
-            <ListView 
-                    IsFocusEngagementEnabled="True"
-                    IsItemClickEnabled="True"
-                    ItemClick="ListView_ItemClick"
-                    ItemsSource="{x:Bind ListaModos}"
-                    ItemTemplate="{StaticResource GridViewMode}"
-                    Grid.Row="1"
-                    Background="Gray"
-                    TabIndex="0"/>
+            <TextBlock Text="HEROES UNLEASHED" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Bold" FontFamily="SemiBold"/>
+            <ListView IsFocusEngagementEnabled="True"
+                      IsItemClickEnabled="True"
+                      ItemClick="ListView_ItemClick"
+                      ItemsSource="{x:Bind ListaModos}"
+                      ItemTemplate="{StaticResource GridViewMode}"
+                      Grid.Row="1"
+                      Background="Gray"
+                      TabIndex="0"/>
             <!--ListViewItem>
+                     
                     <Grid HorizontalAlignment="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4*"/>
@@ -155,7 +156,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="3.25*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="2" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+            <Grid Grid.Row="2" Background="LightGray" BorderBrush="Black" BorderThickness="1" CornerRadius="20,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3.5*"/>
                     <RowDefinition/>
@@ -176,7 +177,7 @@
 
                 <Image Source="/Assets/icon User.png" Stretch="Fill" />
 
-                <Grid Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                <Grid Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="Gray" Opacity="0.8">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="0.5*"/>
