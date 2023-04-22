@@ -20,41 +20,21 @@ namespace Trabajo_DSI
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Pausa : Page
+    public sealed partial class Partidas : Page
     {
-        public Pausa()
+        public Partidas()
         {
             this.InitializeComponent();
         }
 
-        private void ReanudeButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-            App.TryGoBack();
+            Frame.Navigate(typeof(Menu_un_jugador));
         }
 
-        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonStack1_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Configuracion));
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Partidas));
-        }
-
-        private void RetryButton_Click(object sender, RoutedEventArgs e)
-        {
-            App.TryGoBack();
-        }
-
-        private void GiveUpButton_Click(object sender, RoutedEventArgs e)
-        {
-            App.TryGoBack();
+            Frame.Navigate(typeof(UI_Juego));
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="Trabajo_DSI.Partidas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Trabajo_DSI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="ButtonStack" TargetType="Button">
+            <Setter Property="BorderThickness" Value="5" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="DarkBlue" Offset="0.75"/>
+                        <GradientStop Color="#3c70e8"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="40"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="FontFamily" Value="Consolas Bold"/>
+            <Setter Property="Height" Value="100"/>
+        </Style>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="Assets/Images/MenuArchivos.jpg" Grid.ColumnSpan="3" Grid.RowSpan="2" Stretch="Fill" Opacity="0.45"/>
+        <TextBlock Text="SELECCIONA UNA PARTIDA" Grid.ColumnSpan="3" FontSize="50" HorizontalAlignment="Center" Margin="20"/>
+        
+        <Button Width="80" Height="80" Background="Gray" VerticalAlignment="Top" Click="ButtonBack_Click" CornerRadius="0,0,20,0">
+            <Button.Content>
+                <Image Source="Assets/Flechita atrás.png" Width="50" Height="50" Stretch="Fill"/>
+            </Button.Content>
+        </Button>
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Button Style="{StaticResource ButtonStack}" Content="Archivo 1" Name="ButtonStack1" Click="ButtonStack1_Click"/>
+            <Button Style="{StaticResource ButtonStack}" Content="Archivo 2" Name="ButtonStack2" IsEnabled="False"/>
+            <Button Style="{StaticResource ButtonStack}" Content="Archivo 3" Name="ButtonStack3" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+</Page>

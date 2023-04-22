@@ -42,10 +42,10 @@
             <Grid Margin="400,90" BorderBrush="Black">
                 <StackPanel Margin="100,92">
                     <Button x:Name="ReanudeButton" Content="REANUDAR" Style="{StaticResource ButtonStack}" Click="ReanudeButton_Click"/>
-                    <Button Content="GUARDAR" Style="{StaticResource ButtonStack}"/>
-                    <Button Content="VOLVER A EMPEZAR" Style="{StaticResource ButtonStack}"/>
+                    <Button x:Name="SaveButton" Content="GUARDAR" Style="{StaticResource ButtonStack}" Click="SaveButton_Click"/>
+                    <Button x:Name="RetryButton" Content="VOLVER A EMPEZAR" Style="{StaticResource ButtonStack}" Click="RetryButton_Click"/>
                     <Button x:Name="SettingButton" Content="OPCIONES"  Style="{StaticResource ButtonStack}" Click="SettingButton_Click"/>
-                    <Button  Content="RENDIRSE" Style="{StaticResource ButtonStack}"/>
+                    <Button x:Name="GiveUpButton" Content="RENDIRSE" Style="{StaticResource ButtonStack}" Click="GiveUpButton_Click"/>
                     <Button x:Name="ExitButton"  Content="SALIR AL MENÚ" Style="{StaticResource ButtonStack}" Click="ExitButton_Click"/>
                 </StackPanel>
             </Grid>

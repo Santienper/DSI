@@ -50,7 +50,8 @@ namespace Trabajo_DSI
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(UI_Juego));
+            if (modoSel == 5) Frame.Navigate(typeof(PantallaCarga));
+            else Frame.Navigate(typeof(UI_Juego));
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)

@@ -24,7 +24,7 @@
             </Button.Content>
         </Button>
         <TextBlock Text="CONFIGURACIÓN" HorizontalAlignment="Center" FontSize="40" Height="70" VerticalAlignment="Top" Margin="0,25,0,0" />
-        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Transparent" UseSystemFocusVisuals="False">
+        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Transparent">
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="CONTROLES" Style="{StaticResource PivotHeaderItemStyle1}"/>
