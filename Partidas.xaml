@@ -39,7 +39,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Image Source="Assets/Images/MenuArchivos.jpg" Grid.ColumnSpan="3" Grid.RowSpan="2" Stretch="Fill" Opacity="0.45"/>
-        <TextBlock Text="SELECCIONA UNA PARTIDA" Grid.ColumnSpan="3" FontSize="50" HorizontalAlignment="Center" Margin="20"/>
+        <TextBlock x:Name="TextPartidas" Grid.ColumnSpan="3" FontSize="50" HorizontalAlignment="Center" Margin="20"/>
         
         <Button Width="80" Height="80" Background="Gray" VerticalAlignment="Top" Click="ButtonBack_Click" CornerRadius="0,0,20,0">
             <Button.Content>

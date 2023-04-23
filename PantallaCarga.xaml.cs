@@ -24,6 +24,7 @@ namespace Trabajo_DSI
     {
         //Timer/ bucle para progress bar
         BarTimer barTimer = null;
+        int modo = -1;
 
         public PantallaCarga()
         {
@@ -32,9 +33,14 @@ namespace Trabajo_DSI
             barTimer = new BarTimer(BarPartida, valor);
             barTimer.TimerBar.Start();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            modo = (int)e.Parameter;
+        }
         private void BarPartida_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            if (BarPartida.Value == BarPartida.Maximum) { Frame.Navigate(typeof(UI_Juego)); }
+            if (BarPartida.Value == BarPartida.Maximum) { Frame.Navigate(typeof(UI_Juego), modo); }
         }
     }
 }

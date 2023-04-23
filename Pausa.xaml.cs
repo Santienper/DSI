@@ -22,11 +22,22 @@ namespace Trabajo_DSI
     /// </summary>
     public sealed partial class Pausa : Page
     {
+        int modo = -1;
         public Pausa()
         {
             this.InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            modo = (int)e.Parameter;
+            if (modo == 5 || modo == 6) //si se ha elegido una modalidad del menu multijugador se desactivan los botones propios del singleplayer
+            {
+                SaveButton.IsEnabled = false;
+                RetryButton.IsEnabled = false;
+            }
+        }
         private void ReanudeButton_Click(object sender, RoutedEventArgs e)
         {
             App.TryGoBack();
@@ -44,7 +55,7 @@ namespace Trabajo_DSI
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Partidas));
+            Frame.Navigate(typeof(Partidas), modo);
         }
 
         private void RetryButton_Click(object sender, RoutedEventArgs e)

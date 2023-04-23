@@ -23,6 +23,8 @@ namespace Trabajo_DSI {
     /// </summary>
     public sealed partial class UI_Juego : Page, INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
+        int modo = -1;
+
         public UI_Juego() {
             this.InitializeComponent();
         }
@@ -32,11 +34,12 @@ namespace Trabajo_DSI {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             createEntity("Casa", 50, 100);
+            modo = (int)e.Parameter;
             base.OnNavigatedTo(e);
         }
 
         private void PauseBottom_Click(object sender, RoutedEventArgs e) {
-            Frame.Navigate(typeof(Pausa));
+            Frame.Navigate(typeof(Pausa),modo);
         }
 
         private void Entity_KeyDown(object sender, KeyRoutedEventArgs e) {

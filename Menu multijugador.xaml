@@ -67,6 +67,7 @@
         </DataTemplate>
 
     </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.25*"/>
@@ -156,7 +157,7 @@
             </ListView>
             <Button Content="VOLVER" Grid.Row="2" Style="{StaticResource BackButton}" Margin="13" Click="BackButton_Click"/>
         </Grid>
-        
+
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>

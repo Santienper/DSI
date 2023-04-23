@@ -63,7 +63,7 @@ namespace Trabajo_DSI
 
         private void BotonJugar_Click(object sender, RoutedEventArgs e)
         {
-            if (modoSel == 3) Frame.Navigate(typeof(Partidas));
+            Frame.Navigate(typeof(Partidas), modoSel);
         }
     }
 }

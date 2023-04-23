@@ -22,19 +22,27 @@ namespace Trabajo_DSI
     /// </summary>
     public sealed partial class Partidas : Page
     {
+        int modo = -1; 
         public Partidas()
         {
             this.InitializeComponent();
         }
-
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            modo = (int)e.Parameter;
+            if (modo == 3 || modo == 4) TextPartidas.Text = "SELECCIONA UNA PARTIDA";
+            else TextPartidas.Text = "ELIGE UN ARCHIVO VACÍO";
+            
+        }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Menu_un_jugador));
+            App.TryGoBack();
         }
 
         private void ButtonStack1_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(UI_Juego));
+            Frame.Navigate(typeof(UI_Juego), modo); //pasamos el modo de juego a la UI del Juego, que despues se enviara al menu de pausa
         }
     }
 }

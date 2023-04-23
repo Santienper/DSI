@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,7 +27,7 @@ namespace Trabajo_DSI
     {
         public ObservableCollection<Mode> ListaModos { get; } = new ObservableCollection<Mode>();
         bool seleccionado;
-        int modoSel = -1;
+        int modoSel = -1; //-1 Ningun modo seleccionado
         public Menu_multijugador()
         {
             this.InitializeComponent();
@@ -48,12 +50,33 @@ namespace Trabajo_DSI
             App.TryGoBack();
         }
 
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        private async void  PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (modoSel == 5) Frame.Navigate(typeof(PantallaCarga));
-            else Frame.Navigate(typeof(UI_Juego));
+            if (modoSel == 5) Frame.Navigate(typeof(PantallaCarga),modoSel);
+            else if (modoSel == 6) //mostramos contentDialog para que el jugador introduzca clave de amigo/contraseña
+            {
+                TextBox input = new TextBox()
+                {
+                    Height = (double)Application.Current.Resources["TextControlThemeMinHeight"],
+                    PlaceholderText = "Codigo Amigo",
+                    
+                };
+                ContentDialog dialog = new ContentDialog()
+                {
+                    Title = "Introduce el codigo de amigo.",
+                    MaxWidth = this.ActualWidth,
+                    PrimaryButtonText = "OK",
+                    SecondaryButtonText = "Cancel",
+                    Content = input,
+                };
+                ContentDialogResult result = await dialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    input = (TextBox)dialog.Content;
+                    Frame.Navigate(typeof(PantallaCarga), modoSel);
+                }
+            }
         }
-
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Mode Sel = e.ClickedItem as Mode;
