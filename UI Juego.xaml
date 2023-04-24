@@ -60,7 +60,8 @@
                 <Grid>
                     <Image Source="Assets/map.jpg" Rotation="45" AllowDrop="True" DragOver="Map_DragOver" Drop="Map_Drop"/>
                     <Canvas x:Name="Mundo" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
-                        
+
+                        <TextBox Text="Te has rendido..." Foreground="DarkRed" Visibility="Collapsed"/>
                         <!--<Image Source="Assets/icon IronMan.png" Margin="50" Width="20" Height="20"/>-->
                     </Canvas>
                 </Grid>

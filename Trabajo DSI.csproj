@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BarTimer.cs" />
+    <Compile Include="Controlador.cs" />
     <Compile Include="PantallaCarga.xaml.cs">
       <DependentUpon>PantallaCarga.xaml</DependentUpon>
     </Compile>
@@ -157,6 +158,8 @@
   <ItemGroup>
     <Content Include="Assets\casa.jpg" />
     <Content Include="Assets\Flechita atrás.png" />
+    <Content Include="Assets\Fondo multijugador.jpg" />
+    <Content Include="Assets\Fondo UnJugador.jpg" />
     <Content Include="Assets\funky heroina.jpg" />
     <Content Include="Assets\icon IronMan.png" />
     <Content Include="Assets\Icon Media.png" />

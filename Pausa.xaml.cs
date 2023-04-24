@@ -23,6 +23,7 @@ namespace Trabajo_DSI
     public sealed partial class Pausa : Page
     {
         int modo = -1;
+        bool rendirse = true;
         public Pausa()
         {
             this.InitializeComponent();

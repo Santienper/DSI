@@ -11,7 +11,7 @@
     <Page.Resources>
         <Style x:Key="PivotHeaderItemStyle1" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Aqua"/>
-            <Setter Property="Margin" Value="85,0,85,0"/>
+            <Setter Property="Margin" Value="90,0,90,0"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
     </Page.Resources>
@@ -24,7 +24,7 @@
             </Button.Content>
         </Button>
         <TextBlock Text="CONFIGURACIÓN" HorizontalAlignment="Center" FontSize="40" Height="70" VerticalAlignment="Top" Margin="0,25,0,0" />
-        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Transparent">
+        <Pivot SelectedIndex="2" Margin="0,100,0,0" Background="Transparent" HorizontalContentAlignment="Stretch">
             <PivotItem>
                 <PivotItem.Header>
                     <TextBlock Text="CONTROLES" Style="{StaticResource PivotHeaderItemStyle1}"/>
