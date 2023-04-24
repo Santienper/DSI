@@ -7,6 +7,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,9 +23,12 @@ namespace Trabajo_DSI {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class UI_Juego : Page, INotifyPropertyChanged {
+    public sealed partial class UI_Juego : Page, INotifyPropertyChanged 
+    {
         public event PropertyChangedEventHandler PropertyChanged;
         int modo = -1;
+        bool Arrastra = false;
+        PointerPoint PtArrastreMundo = null;
 
         public UI_Juego() {
             this.InitializeComponent();
@@ -88,6 +93,45 @@ namespace Trabajo_DSI {
                 Point punto = e.GetPosition(Mundo);
                 createEntity(await e.DataView.GetTextAsync(), punto.X, punto.Y);
             }
+        }
+
+        private void MiScroll_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            var Puntero = e.GetCurrentPoint(e.OriginalSource as Image);
+            if (Puntero.Properties.IsRightButtonPressed == true)
+            {
+                Arrastra = true;
+                PtArrastreMundo = Puntero;
+                Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Hand, 0);
+            }
+        }
+
+        private void MiScroll_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            PointerPoint Pt = e.GetCurrentPoint(Mundo);
+            ScrollViewer Scroll = sender as ScrollViewer;
+            if (Arrastra == true)
+            {
+                Scroll.ChangeView(
+                    Scroll.HorizontalOffset - (Pt.Position.X - PtArrastreMundo.Position.X),
+                    Scroll.VerticalOffset - (Pt.Position.Y - PtArrastreMundo.Position.Y),
+                    Scroll.ZoomFactor);
+                e.Handled = true;
+            }
+        }
+
+        private void MiScroll_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Arrastra = false;
+            PtArrastreMundo = null;
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
+        }
+
+        private void MiScroll_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Arrastra = false;
+            PtArrastreMundo = null;
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
         }
     }
 }

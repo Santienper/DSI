@@ -70,7 +70,6 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
-       
     </Page.Resources>
     
     <Grid>
@@ -80,7 +79,13 @@
             <ColumnDefinition Width="1.25*"/>
         </Grid.ColumnDefinitions>
         <Image Source="Assets/Images/CityImage.jpg" Grid.Column="1" Grid.ColumnSpan="3" Stretch="Fill"/>
-        <Grid BorderBrush="Black" BorderThickness="1" Background="LightGray">
+        <Grid BorderBrush="Black" BorderThickness="1">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FF1F668F" Offset="0.2"/>
+                    <GradientStop Color="#069DEE"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="140"/>
                 <RowDefinition Height="*"/>
@@ -93,53 +98,10 @@
                       ItemsSource="{x:Bind ListaModos}"
                       ItemTemplate="{StaticResource GridViewMode}"
                       Grid.Row="1"
-                      Background="Gray"
-                      TabIndex="0"/>
-            <!--ListViewItem>
-                     
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
-                            <Button.Content>
-                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="5*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
-                                    <TextBlock Grid.Row="1" Text="UN JUGADOR (vs CPU)" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </ListViewItem>
-                <ListViewItem>
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
-                            <Button.Content>
-                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#96ff6a"  BorderBrush="Black" BorderThickness="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="5*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="/Assets/Images/vengadores multijugador.jpg" Stretch="Fill"/>
-                                    <TextBlock Grid.Row="1" Text="MULTIJUGADOR" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </ListViewItem>
-            </ListView>-->
-            <Button Content="SALIR" Grid.Row="2" Margin="13" Style="{StaticResource ExitButton}" Click="ExitButton_Click">
+                      Background="#FF005867"
+                      TabIndex="0"
+                      IsTabStop="True"/>
+            <Button Content="SALIR" Grid.Row="2" Margin="13" Style="{StaticResource ExitButton}" Click="ExitButton_Click" TabIndex="5">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Gray" Offset="0.75"/>
@@ -148,25 +110,36 @@
                 </Button.Background>
             </Button>
         </Grid>
-
-
+        
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition Height="3.25*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="2" Background="LightGray" BorderBrush="Black" BorderThickness="1" CornerRadius="20,0,0,0">
+            <Grid Grid.Row="2" BorderBrush="Black" BorderThickness="1" CornerRadius="20,0,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FF1F668F" Offset="0.75"/>
+                        <GradientStop Color="#069DEE"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3.5*"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="1">
+                <Grid Margin="40" BorderBrush="Black" BorderThickness="3" CornerRadius="15">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="DarkGray" Offset="0.75"/>
+                            <GradientStop Color="White"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <TextBlock x:Name="Description" Text="Por favor, selecciona un modo de juego" FontSize="30" Foreground="Black" TextWrapping="Wrap" Margin="20" TextAlignment="Center"/>
                 </Grid>
 
-                <Button x:Name="BotonEmpezar" Grid.Row="1" Content="EMPEZAR" Margin="13" Style="{StaticResource StartButton}" Click="ButtonStart_Click" IsEnabled="False"/>
+                <Button x:Name="BotonEmpezar" Grid.Row="1" Content="EMPEZAR" Margin="13" Style="{StaticResource StartButton}" Click="ButtonStart_Click" IsEnabled="False" TabIndex="1"/>
             </Grid>
 
             <Grid BorderBrush="Black" BorderThickness="1">
@@ -187,18 +160,18 @@
                     <TextBlock Grid.Row="1" Text="#CODIGO DE AMIGO" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="50,0,0,0" HorizontalAlignment="Stretch">
-                <Button Margin="20">
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="50,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Button Margin="20" CornerRadius="20" TabIndex="2">
                     <Button.Content>
                         <Image Source="/Assets/Icon Media.png"/>
                     </Button.Content>
                 </Button>
-                <Button Margin="5,20,20,20">
+                <Button Margin="5,20,20,20" CornerRadius="20" TabIndex="3">
                     <Button.Content>
                         <Image Source="/Assets/Notification.png"/>
                     </Button.Content>
                 </Button>
-                <Button Margin="5,20,20,20" Click="ButtonOptions_Click">
+                <Button Margin="5,20,20,20" Click="ButtonOptions_Click" CornerRadius="20" TabIndex="4">
                     <Button.Content>
                         <Image Source="/Assets/Settings.png"/>
                     </Button.Content>

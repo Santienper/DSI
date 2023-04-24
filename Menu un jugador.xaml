@@ -76,7 +76,13 @@
             <ColumnDefinition Width="1.25*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid BorderBrush="Black" BorderThickness="1" Background="#FFFFF760">
+        <Grid BorderBrush="Black" BorderThickness="1">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FF7D6D22" Offset="0.2"/>
+                    <GradientStop Color="#FFFFF206"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="140"/>
                 <RowDefinition Height="*"/>
@@ -89,7 +95,9 @@
                       ItemTemplate="{StaticResource GridViewMode}"
                       ItemClick="ListView_ItemClick"
                       Grid.Row="1"
-                      Background="#89842f">
+                      Background="#89842f"
+                      IsTabStop="True"
+                      TabIndex="0">
                 <!--<ListViewItem>
                     <Grid HorizontalAlignment="Center">
                         <Grid.RowDefinitions>
@@ -154,7 +162,7 @@
                     </Grid>
                 </ListViewItem>-->
             </ListView>
-            <Button x:Name="BotonVolver" Content="VOLVER" Grid.Row="2" Style="{StaticResource BackButton}" Margin="13" Click="BotonVolver_Click"/>
+            <Button x:Name="BotonVolver" Content="VOLVER" Grid.Row="2" Style="{StaticResource BackButton}" Margin="13" Click="BotonVolver_Click" TabIndex="3"/>
         </Grid>
 
 
@@ -164,17 +172,29 @@
                 <RowDefinition/>
                 <RowDefinition Height="3.25*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="2" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+            <Grid Grid.Row="2" BorderBrush="Black" BorderThickness="1" CornerRadius="20,0,0,0">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FF7D6D22" Offset="0.75"/>
+                        <GradientStop Color="#FFFFF206"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3.5*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Grid Background="White" Margin="40" BorderBrush="Black" BorderThickness="3" CornerRadius="15">
+                <Grid Margin="40" BorderBrush="Black" BorderThickness="3" CornerRadius="15">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="DarkGray" Offset="0.75"/>
+                            <GradientStop Color="White"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <TextBlock x:Name="Description" Text="Por favor, selecciona un modo para un jugador" FontSize="30" Foreground="Black" TextWrapping="Wrap" Margin="20" TextAlignment="Center"/>
                 </Grid>
 
-                <Button x:Name="BotonJugar" Grid.Row="1" Content="JUGAR" Style="{StaticResource PlayButton}" Margin="13" Click="BotonJugar_Click" IsEnabled="False"/>
+                <Button x:Name="BotonJugar" Grid.Row="1" Content="JUGAR" Style="{StaticResource PlayButton}" Margin="13" Click="BotonJugar_Click" IsEnabled="False" TabIndex="2"/>
             </Grid>
 
             <Grid BorderBrush="Black" BorderThickness="1">
@@ -196,7 +216,7 @@
                 </Grid>
             </Grid>
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="330,0,0,0" HorizontalAlignment="Stretch">
-                <Button Margin="5,20,20,20" Click="ButtonOptions_Click">
+                <Button Margin="5,20,20,20" Click="ButtonOptions_Click" CornerRadius="20" TabIndex="2">
                     <Button.Content>
                         <Image Source="/Assets/Settings.png"/>
                     </Button.Content>

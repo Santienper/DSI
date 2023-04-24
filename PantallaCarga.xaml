@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Image Source="Assets/Images/SpideManRef2.jpg" Stretch="Fill" Opacity="0.4"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

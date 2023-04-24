@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    RequestedTheme="Light">
+    RequestedTheme="Light"
+    NavigationCacheMode="Required">
+    
     <Page.Resources>
         <!--<StaticResource ResourceKey="Lista" x:Key="Lista"/>-->
         <DataTemplate x:Key="UnidadTemplate" x:DataType="local:Unidad">
@@ -37,13 +39,24 @@
 
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="Black">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.5*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled" IsTabStop="True">
+            <ScrollViewer 
+                x:Name="MiScroll"
+                ZoomMode="Enabled"
+                PointerPressed="MiScroll_PointerPressed"
+                PointerMoved="MiScroll_PointerMoved"
+                PointerReleased="MiScroll_PointerReleased"
+                PointerExited="MiScroll_PointerExited"
+                VerticalScrollBarVisibility="Visible" 
+                HorizontalScrollBarVisibility="Visible" 
+                HorizontalScrollMode="Enabled" 
+                VerticalScrollMode="Enabled" 
+                IsTabStop="True">
                 <Grid>
                     <Image Source="Assets/map.jpg" Rotation="45" AllowDrop="True" DragOver="Map_DragOver" Drop="Map_Drop"/>
                     <Canvas x:Name="Mundo" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
@@ -52,12 +65,19 @@
                     </Canvas>
                 </Grid>
             </ScrollViewer>
-            <Button x:Name="PauseBottom" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="90" Height="90" Click="PauseBottom_Click" Background="#FF16979C" CornerRadius="20" BorderBrush="DarkCyan">
+            
+            <Button x:Name="PauseBottom" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="90" Height="90" Click="PauseBottom_Click" CornerRadius="20" BorderBrush="White">
                 <Button.Content>
                     <Image Source="/Assets/pause.png" Stretch="Uniform"/>
                 </Button.Content>
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FF1F668F" Offset="0.75"/>
+                        <GradientStop Color="#069DEE"/>
+                    </LinearGradientBrush>
+                </Button.Background>
             </Button>
-            <Border Grid.Row="1" BorderBrush="White" BorderThickness="2">
+            <Border Grid.Row="1" BorderBrush="White" BorderThickness="2" CornerRadius="20,20,0,0">
                 <Grid Style="{StaticResource ViewGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>

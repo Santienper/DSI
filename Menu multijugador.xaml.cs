@@ -26,7 +26,6 @@ namespace Trabajo_DSI
     public sealed partial class Menu_multijugador : Page
     {
         public ObservableCollection<Mode> ListaModos { get; } = new ObservableCollection<Mode>();
-        bool seleccionado;
         int modoSel = -1; //-1 Ningun modo seleccionado
         public Menu_multijugador()
         {
@@ -58,15 +57,15 @@ namespace Trabajo_DSI
                 TextBox input = new TextBox()
                 {
                     Height = (double)Application.Current.Resources["TextControlThemeMinHeight"],
-                    PlaceholderText = "Codigo Amigo",
+                    PlaceholderText = "Código Amigo",
                     
                 };
                 ContentDialog dialog = new ContentDialog()
                 {
-                    Title = "Introduce el codigo de amigo.",
+                    Title = "Introduce el código de amigo.",
                     MaxWidth = this.ActualWidth,
-                    PrimaryButtonText = "OK",
-                    SecondaryButtonText = "Cancel",
+                    PrimaryButtonText = "Listo",
+                    SecondaryButtonText = "Cancelar",
                     Content = input,
                 };
                 ContentDialogResult result = await dialog.ShowAsync();
@@ -82,7 +81,7 @@ namespace Trabajo_DSI
             Mode Sel = e.ClickedItem as Mode;
             Description.Text = Sel.Explicacion;
             modoSel = Sel.Id;
-            seleccionado = true;
+            //seleccionado = true;
             BotonJugar.IsEnabled = true;
         }
     }
