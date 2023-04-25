@@ -28,6 +28,7 @@ namespace Trabajo_DSI {
             { "Oveja", new Unidad("Oveja", "Oveja", 50, "Assets\\oveja.jpg", new string[] { "Casa" }) },
             { "Soldado", new Unidad("Soldado", "Soldado", 100, "Assets\\soldado.jpg", new string[] { "HQ" }) },
             { "Funky", new Unidad("Funky", "Heroina", 200, "Assets\\funky heroina.jpg", new string[] { "Casa", "HQ" }) },
+            {"Puntero",new Unidad("Puntero","Mira",0,"Assets\\IconPuntero.png",new string[]{" "}) }
         };
     }
 

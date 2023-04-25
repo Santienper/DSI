@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Media;
 
 namespace P4
 {
-    public struct DeltaTeclado {public double X, Y, A, Z;}
+    public struct DeltaTeclado {public double X, Y, Z;}
     
     internal class Controlador
     {
@@ -41,10 +41,6 @@ namespace P4
         VirtualKey Arriba1 = VirtualKey.GamepadDPadUp;
         VirtualKey Abajo = VirtualKey.S;
         VirtualKey Abajo1 = VirtualKey.GamepadDPadDown;
-        VirtualKey GirDer = VirtualKey.E;
-        VirtualKey GirDer1= VirtualKey.GamepadRightTrigger;
-        VirtualKey GirIzq = VirtualKey.Q;
-        VirtualKey GirIzq1 = VirtualKey.GamepadLeftTrigger;
         VirtualKey ZoomMas = VirtualKey.C;
         VirtualKey ZoomMas1 = VirtualKey.GamepadRightShoulder;
         VirtualKey ZoomMen = VirtualKey.Z;
@@ -67,43 +63,30 @@ namespace P4
 
         public DeltaTeclado KeyContinuo()
         { 
-            delta.X = 0.0; delta.Y = 0.0; delta.A = 0.0; delta.Z = 0.0;
+            delta.X = 0.0; delta.Y = 0.0; delta.Z = 0.0;
             
             if (KeyIsDown(Izquierda) | KeyIsDown(Izquierda1)) delta.X = -1;
             if (KeyIsDown(Derecha) | KeyIsDown(Derecha1)) delta.X = +1;
             if (KeyIsDown(Arriba) | KeyIsDown(Arriba1)) delta.Y = -1;
             if (KeyIsDown(Abajo) | KeyIsDown(Abajo1)) delta.Y = +1;
-            if (KeyIsDown(GirDer) | KeyIsDown(GirDer1)) delta.A = +1;
-            if (KeyIsDown(GirIzq) | KeyIsDown(GirIzq)) delta.A = -1;
-            if (KeyIsDown(GirDer) | KeyIsDown(GirDer1)) delta.A = +1;
-            if (KeyIsDown(GirIzq) | KeyIsDown(GirIzq1)) delta.A = -1;
             if (KeyIsDown(ZoomMas) | KeyIsDown(ZoomMas1)) delta.Z = +0.1;
             if (KeyIsDown(ZoomMen) | KeyIsDown(ZoomMen1)) delta.Z = -0.1;
             return delta;
-
         }
-
-
 
         //Keyboard por eventos
         public DeltaTeclado KeyDown(KeyRoutedEventArgs e)
         {
-            delta.X = 0.0;delta.Y = 0.0;delta.A= 0.0;delta.Z= 0.0;
+            delta.X = 0.0;delta.Y = 0.0;delta.Z= 0.0;
             if ((e.Key==Izquierda)| (e.Key == Izquierda1)) delta.X = -10;
             if ((e.Key == Derecha) | (e.Key == Derecha1)) delta.X = +10;
             if ((e.Key == Arriba) | (e.Key == Arriba1)) delta.Y = -10;
             if ((e.Key == Abajo) | (e.Key == Abajo1)) delta.Y= +10;
-            if ((e.Key == GirDer) | (e.Key == GirDer1)) delta.A = +1;
-            if ((e.Key == GirIzq) | (e.Key == GirIzq)) delta.A = -1;
-            if ((e.Key == GirDer) | (e.Key == GirDer1)) delta.A = +1;
-            if ((e.Key == GirIzq) | (e.Key == GirIzq1)) delta.A = -1;
             if ((e.Key == ZoomMas) | (e.Key == ZoomMas1)) delta.Z = +0.1;
             if ((e.Key == ZoomMen) | (e.Key == ZoomMen1)) delta.Z = -0.1;
             return delta;    
             
         }
-
-
         public Controlador ()
         {
             Gamepad.GamepadAdded += (object sender, Gamepad e) =>

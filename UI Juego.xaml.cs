@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P4;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -8,6 +9,8 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.Gaming.Input;
+using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
@@ -30,9 +33,14 @@ namespace Trabajo_DSI {
         int modo = -1;
         bool Arrastra = false;
         PointerPoint PtArrastreMundo = null;
+        //Mando
+        Controlador MiControl = null;
+
+        public int NumCiudadanos = 0;
 
         public UI_Juego() {
             this.InitializeComponent();
+            MiControl=new Controlador();
         }
 
         public InstanciaUnidad[] Unidades = { };
@@ -40,8 +48,10 @@ namespace Trabajo_DSI {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             createEntity("Casa", 50, 100);
+            //createEntity("Puntero", 50,200);
             //modo = (int)e.Parameter;
             base.OnNavigatedTo(e);
+            
         }
 
         private void PauseBottom_Click(object sender, RoutedEventArgs e) {
@@ -49,6 +59,43 @@ namespace Trabajo_DSI {
         }
 
         private void Entity_KeyDown(object sender, KeyRoutedEventArgs e) {
+            ContentControl MiEntidad = sender as ContentControl;
+            CompositeTransform Transformacion = MiEntidad.RenderTransform as CompositeTransform;
+            double X = 0, Y = 0;
+            float zoom = 0;
+
+            switch (e.Key)
+            {
+                case VirtualKey.A: //movimiento a través de las teclas
+                case VirtualKey.GamepadRightThumbstickLeft:
+                    X = -10;
+                    break;
+                case VirtualKey.D:
+                case VirtualKey.GamepadRightThumbstickRight:
+                    X = +10;
+                    break;
+                case VirtualKey.W:
+                case VirtualKey.GamepadRightThumbstickUp:
+                    Y = -10;
+                    break;
+                case VirtualKey.S:
+                case VirtualKey.GamepadRightThumbstickDown:
+                    Y = +10;
+                    break;
+                case VirtualKey.GamepadLeftShoulder:
+                    zoom -= 0.1f;
+                    break;
+                case VirtualKey.GamepadRightShoulder:
+                    zoom += 0.1f;
+                    break;
+                case VirtualKey.GamepadView:
+                    
+                    break;
+            }
+            Transformacion.TranslateX += X / MiScroll.ZoomFactor;
+            Transformacion.TranslateY += Y / MiScroll.ZoomFactor;
+            MiScroll.ChangeView(MiScroll.HorizontalOffset, MiScroll.VerticalOffset, MiScroll.ZoomFactor + zoom);
+            MiEntidad.RenderTransform = Transformacion;
 
         }
 
@@ -70,19 +117,32 @@ namespace Trabajo_DSI {
             Boton.Content = Imagen; Boton.Click += Button_Click;
             Boton.Tag = new InstanciaUnidad(id);
             ContentControl ControladorContenido = new ContentControl();
-            ControladorContenido.Content = Boton; ControladorContenido.IsTabStop = true; ControladorContenido.UseSystemFocusVisuals = true;
-            ControladorContenido.KeyDown += Entity_KeyDown;
+            ControladorContenido.Content = Boton; ControladorContenido.IsTabStop = true; ControladorContenido.UseSystemFocusVisuals = true; ControladorContenido.IsFocusEngagementEnabled = true;
+            if (un.Nombre != "Casa") ControladorContenido.KeyDown += Entity_KeyDown; 
             CompositeTransform Transformacion = new CompositeTransform();
             Transformacion.TranslateX = 0.0; Transformacion.TranslateY = 0.0; Transformacion.Rotation = 0;
             ControladorContenido.RenderTransform = Transformacion;
             Mundo.Children.Add(ControladorContenido);
             ControladorContenido.SetValue(Canvas.LeftProperty, x);
             ControladorContenido.SetValue(Canvas.TopProperty, y);
+            ControladorContenido.ManipulationMode = ManipulationModes.All;
+            ControladorContenido.ManipulationDelta += Unidad_ManipulationDelta;
         }
-
+        private void Unidad_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e) {
+            ContentControl Unidad = sender as ContentControl;
+            CompositeTransform Transformacion = Unidad.RenderTransform as CompositeTransform;
+            Transformacion.TranslateX += e.Delta.Translation.X / MiScroll.ZoomFactor;
+            Transformacion.TranslateY += e.Delta.Translation.Y / MiScroll.ZoomFactor;
+            Transformacion.Rotation += e.Delta.Rotation;
+            Unidad.RenderTransform = Transformacion;
+        }
         private void Acciones_DragItemsStarting(object sender, DragItemsStartingEventArgs e) {
             Unidad un = e.Items[0] as Unidad;
             e.Data.SetText(un.id);
+        }
+        private void Acciones_ItemClick(object sender, ItemClickEventArgs e){
+            Unidad un = e.ClickedItem as Unidad;
+            createEntity(un.id, 50, 50);
         }
 
         private void Map_DragOver(object sender, DragEventArgs e) {
@@ -117,7 +177,7 @@ namespace Trabajo_DSI {
                     Scroll.HorizontalOffset - (Pt.Position.X - PtArrastreMundo.Position.X),
                     Scroll.VerticalOffset - (Pt.Position.Y - PtArrastreMundo.Position.Y),
                     Scroll.ZoomFactor);
-                e.Handled = true;
+                e.Handled = false;
             }
         }
 

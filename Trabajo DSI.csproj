@@ -173,6 +173,7 @@
     <Content Include="Assets\IconCiudadanos.png" />
     <Content Include="Assets\iconEnergy.png" />
     <Content Include="Assets\iconFood.png" />
+    <Content Include="Assets\IconPuntero.png" />
     <Content Include="Assets\iconWood.png" />
     <Content Include="Assets\Images\avengersPeleando.jpg" />
     <Content Include="Assets\Images\AvengersRobots.jpg" />

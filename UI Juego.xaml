@@ -56,18 +56,18 @@
                 HorizontalScrollBarVisibility="Visible" 
                 HorizontalScrollMode="Enabled" 
                 VerticalScrollMode="Enabled" 
-                IsTabStop="True">
+                IsTabStop="True"
+                TabIndex="0"
+                IsFocusEngagementEnabled="True">
                 <Grid>
                     <Image Source="Assets/map.jpg" Rotation="45" AllowDrop="True" DragOver="Map_DragOver" Drop="Map_Drop"/>
                     <Canvas x:Name="Mundo" TabFocusNavigation="Once" XYFocusKeyboardNavigation="Enabled">
-
-                        <TextBox Text="Te has rendido..." Foreground="DarkRed" Visibility="Collapsed"/>
                         <!--<Image Source="Assets/icon IronMan.png" Margin="50" Width="20" Height="20"/>-->
                     </Canvas>
                 </Grid>
             </ScrollViewer>
             
-            <Button x:Name="PauseBottom" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="90" Height="90" Click="PauseBottom_Click" CornerRadius="20" BorderBrush="White">
+            <Button x:Name="PauseBottom" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30" Width="90" Height="90" Click="PauseBottom_Click" CornerRadius="20" BorderBrush="White" TabIndex="1">
                 <Button.Content>
                     <Image Source="/Assets/pause.png" Stretch="Uniform"/>
                 </Button.Content>
@@ -128,7 +128,7 @@
                             </Border>
                             <Border Grid.Column="1" Grid.Row="3" BorderBrush="White" BorderThickness="2,2,0,0">
                                 <Grid>
-                                    <TextBlock  Text="14/25" Style="{StaticResource Arial}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock  Text="{x:Bind NumCiudadanos}" Style="{StaticResource Arial}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 </Grid>
                             </Border>
                         </Grid>
@@ -173,7 +173,7 @@
                         </Border>
                     </Grid>
                     <Grid Grid.Column="3">
-                        <GridView x:Name="Acciones" Margin="10" CanDragItems="True" DragItemsStarting="Acciones_DragItemsStarting">
+                        <GridView x:Name="Acciones" Margin="10" CanDragItems="True" DragItemsStarting="Acciones_DragItemsStarting" IsFocusEngagementEnabled="True" TabIndex="2" IsItemClickEnabled="True" ItemClick="Acciones_ItemClick">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="local:Unidad">
                                     <!--<TextBlock Text="{Binding Path=Source}"/>-->
