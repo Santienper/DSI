@@ -25,6 +25,23 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
+        <Style x:Name="MiniButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="Gray" Offset="0.5"/>
+                        <GradientStop Color="DarkGray"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
         <Style x:Name="PlayButton" TargetType="Button">
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -195,7 +212,7 @@
 
             </Grid>
 
-            <Grid BorderBrush="Black" BorderThickness="1">
+            <Grid BorderBrush="Black" BorderThickness="1" Background="Black">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
@@ -214,7 +231,7 @@
                 </Grid>
             </Grid>
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="330,0,0,0" HorizontalAlignment="Stretch">
-                <Button Margin="5,20,20,20">
+                <Button Margin="5,20,20,20" Style="{StaticResource MiniButton}">
                     <Button.Content>
                         <Image Source="/Assets/Settings.png"/>
                     </Button.Content>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,7 +25,6 @@ namespace Trabajo_DSI
     public sealed partial class Pausa : Page
     {
         int modo = -1;
-        bool rendirse = true;
         public Pausa()
         {
             this.InitializeComponent();
@@ -56,7 +57,13 @@ namespace Trabajo_DSI
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Partidas), modo);
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "¡Partida Guadada con éxito!",
+                MaxWidth = this.ActualWidth,
+                PrimaryButtonText = "Listo",
+            };
+            dialog.ShowAsync();
         }
 
         private void RetryButton_Click(object sender, RoutedEventArgs e)
@@ -66,7 +73,13 @@ namespace Trabajo_DSI
 
         private void GiveUpButton_Click(object sender, RoutedEventArgs e)
         {
-            App.TryGoBack();
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "¡Te has rendido!",
+                MaxWidth = this.ActualWidth,
+                PrimaryButtonText = "Listo",
+            };
+            dialog.ShowAsync();
         }
     }
 }

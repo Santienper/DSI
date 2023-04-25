@@ -103,7 +103,10 @@
                                 <ColumnDefinition Width="0.4*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-
+                            <Image Source="Assets/iconFood.png" Stretch="Fill" Margin="3"/>
+                            <Image Source="Assets/iconWood.png" Stretch="Fill" Margin="3" Grid.Row="1"/>
+                            <Image Source="Assets/iconEnergy.png" Stretch="Fill" Margin="3" Grid.Row="2"/>
+                            <Image Source="Assets/iconCiudadanos.png" Grid.Row="3" Stretch="Fill" Margin="3"/>
                             <Border Grid.Column="1" Grid.Row="1" BorderBrush="White" BorderThickness="2,2,0,0">
                                 <Grid>
                                     <TextBlock Text="300" Style="{StaticResource Arial}" VerticalAlignment="Center" HorizontalAlignment="Left"/>

@@ -156,14 +156,24 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AntMan.jpg" />
+    <Content Include="Assets\BatmanPeque.jpg" />
+    <Content Include="Assets\BlackPantherPeque.jpg" />
+    <Content Include="Assets\BlackWidowPeque.jpg" />
+    <Content Include="Assets\CapAmericaPeque.jpg" />
     <Content Include="Assets\casa.jpg" />
     <Content Include="Assets\Flechita atrás.png" />
     <Content Include="Assets\Fondo multijugador.jpg" />
     <Content Include="Assets\Fondo UnJugador.jpg" />
     <Content Include="Assets\funky heroina.jpg" />
+    <Content Include="Assets\HulkPeque.jpg" />
     <Content Include="Assets\icon IronMan.png" />
     <Content Include="Assets\Icon Media.png" />
     <Content Include="Assets\icon User.png" />
+    <Content Include="Assets\IconCiudadanos.png" />
+    <Content Include="Assets\iconEnergy.png" />
+    <Content Include="Assets\iconFood.png" />
+    <Content Include="Assets\iconWood.png" />
     <Content Include="Assets\Images\avengersPeleando.jpg" />
     <Content Include="Assets\Images\AvengersRobots.jpg" />
     <Content Include="Assets\Images\CapAmericaReflexivo.jpg" />
@@ -178,6 +188,7 @@
     <Content Include="Assets\Images\SpiderManReflexivo.jpg" />
     <Content Include="Assets\Images\SpiderVersePause.jpg" />
     <Content Include="Assets\Images\vengadores multijugador.jpg" />
+    <Content Include="Assets\IronMan Peque.jpg" />
     <Content Include="Assets\map.jpg" />
     <Content Include="Assets\Notification.png" />
     <Content Include="Assets\oveja.jpg" />
@@ -185,7 +196,9 @@
     <Content Include="Assets\Settings.png" />
     <Content Include="Assets\pause.png" />
     <Content Include="Assets\soldado.jpg" />
+    <Content Include="Assets\SpiderManPeque.jpg" />
     <Content Include="Assets\superheroes hq.jpg" />
+    <Content Include="Assets\SupermanPeque.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -26,6 +26,23 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="CornerRadius" Value="20"/>
         </Style>
+        <Style x:Name="MiniButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="Gray" Offset="0.5"/>
+                        <GradientStop Color="DarkGray"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
         <Style x:Name="PlayButton" TargetType="Button">
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -97,71 +114,7 @@
                       Grid.Row="1"
                       Background="#89842f"
                       IsTabStop="True"
-                      TabIndex="0">
-                <!--<ListViewItem>
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
-                            <Button.Content>
-                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="5*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="/Assets/images/nueva partida iron man.jpg" Stretch="Fill"/>
-                                    <TextBlock Grid.Row="1" Text="NUEVA PARTIDA" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </ListViewItem>
-                <ListViewItem>
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
-                            <Button.Content>
-                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="5*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
-                                    <TextBlock Grid.Row="1" Text="CARGAR PARTIDA" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </ListViewItem>
-                <ListViewItem>
-                    <Grid HorizontalAlignment="Center">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 10, 20, 10" Padding="0">
-                            <Button.Content>
-                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFFF760"  BorderBrush="Black" BorderThickness="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="5*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Source="/Assets/Images/nueva partida iron man.jpg" Stretch="Fill"/>
-                                    <TextBlock Grid.Row="1" Text="MODO CAMPAÑA" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black"/>
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                    </Grid>
-                </ListViewItem>-->
-            </ListView>
+                      TabIndex="0"/>
             <Button x:Name="BotonVolver" Content="VOLVER" Grid.Row="2" Style="{StaticResource BackButton}" Margin="13" Click="BotonVolver_Click" TabIndex="3"/>
         </Grid>
 
@@ -197,7 +150,7 @@
                 <Button x:Name="BotonJugar" Grid.Row="1" Content="JUGAR" Style="{StaticResource PlayButton}" Margin="13" Click="BotonJugar_Click" IsEnabled="False" TabIndex="2"/>
             </Grid>
 
-            <Grid BorderBrush="Black" BorderThickness="1">
+            <Grid BorderBrush="Black" BorderThickness="1" Background="Gray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="2*"/>
@@ -216,7 +169,7 @@
                 </Grid>
             </Grid>
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="330,0,0,0" HorizontalAlignment="Stretch">
-                <Button Margin="5,20,20,20" Click="ButtonOptions_Click" CornerRadius="20" TabIndex="2">
+                <Button Margin="5,20,20,20" Click="ButtonOptions_Click" TabIndex="2" Style="{StaticResource MiniButton}">
                     <Button.Content>
                         <Image Source="/Assets/Settings.png"/>
                     </Button.Content>

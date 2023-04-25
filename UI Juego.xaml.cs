@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
@@ -39,7 +40,7 @@ namespace Trabajo_DSI {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             createEntity("Casa", 50, 100);
-            modo = (int)e.Parameter;
+            //modo = (int)e.Parameter;
             base.OnNavigatedTo(e);
         }
 

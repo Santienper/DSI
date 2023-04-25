@@ -42,7 +42,17 @@ namespace Trabajo_DSI
 
         private void ButtonStack1_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(UI_Juego), modo); //pasamos el modo de juego a la UI del Juego, que despues se enviara al menu de pausa
+            if (modo == 3 || modo == 4) Frame.Navigate(typeof(UI_Juego), modo); //pasamos el modo de juego a la UI del Juego, que despues se enviara al menu de pausa
+        }
+        //archivos vacios
+        private void ButtonStack2_Click(object sender, RoutedEventArgs e)
+        {
+            if (modo == 2) Frame.Navigate(typeof(UI_Juego), modo); 
+        }
+
+        private void ButtonStack3_Click(object sender, RoutedEventArgs e)
+        {
+            if (modo == 2) Frame.Navigate(typeof(UI_Juego), modo);
         }
     }
 }

@@ -48,8 +48,8 @@
         </Button>
         <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <Button Style="{StaticResource ButtonStack}" Content="Archivo 1" Name="ButtonStack1" Click="ButtonStack1_Click"/>
-            <Button Style="{StaticResource ButtonStack}" Content="Archivo 2" Name="ButtonStack2" IsEnabled="False"/>
-            <Button Style="{StaticResource ButtonStack}" Content="Archivo 3" Name="ButtonStack3" IsEnabled="False"/>
+            <Button Style="{StaticResource ButtonStack}" Content="Archivo 2" Name="ButtonStack2" Background="Gray" Click="ButtonStack2_Click"/>
+            <Button Style="{StaticResource ButtonStack}" Content="Archivo 3" Name="ButtonStack3" Background="Gray" Click="ButtonStack3_Click"/>
         </StackPanel>
     </Grid>
 </Page>
