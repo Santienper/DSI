@@ -56,7 +56,6 @@ namespace Trabajo_DSI {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             createEntity("Casa", 50, 100);
-            //createEntity("Puntero", 50,200);
             //modo = (int)e.Parameter;
             timer.Start();
             base.OnNavigatedTo(e);
@@ -136,7 +135,7 @@ namespace Trabajo_DSI {
             Button Boton = new Button(); Imagen.Width = Imagen.Height = 30;
             Boton.Content = Imagen; Boton.Click += Button_Click;
             Boton.Tag = new InstanciaUnidad(id);
-            if (un.Nombre != "Casa") Boton.KeyDown += Entity_KeyDown; 
+            Boton.KeyDown += Entity_KeyDown; 
             CompositeTransform Transformacion = new CompositeTransform();
             Transformacion.TranslateX = 0.0; Transformacion.TranslateY = 0.0; Transformacion.Rotation = 0;
             Boton.RenderTransform = Transformacion;
@@ -160,7 +159,12 @@ namespace Trabajo_DSI {
         }
         private void Acciones_ItemClick(object sender, ItemClickEventArgs e){
             Unidad un = e.ClickedItem as Unidad;
-            createEntity(un.id, 50, 50);
+            if (control != null)
+            {
+                Point cursor = control.cursor;
+                createEntity(un.id, cursor.X, cursor.Y);
+            }
+           
         }
 
         private void Map_DragOver(object sender, DragEventArgs e) {
