@@ -14,175 +14,88 @@ using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
-namespace P4
-{
-    public struct DeltaTeclado {public double X, Y, Z;}
-    
-    internal class Controlador
-    {
+namespace P4 {
+    internal class Controlador {
         //Para manejar los mandos
-        private readonly object myLock = new object();
-        private List<Gamepad> myGamepads = new List<Gamepad>();
+        private readonly object Lock = new object();
+        private List<Gamepad> Gamepads = new List<Gamepad>();
         public Gamepad mainGamepad = null;
         //Lectura y escritura de los mandos
-        public GamepadReading reading, prereading;
-        private GamepadVibration vibration;
+        public GamepadReading reading;
+        public Windows.Foundation.Point cursor, previousCursor;
+        public bool gpInput, mouseInput, kbInput;
 
-        //Cambios por teclado
-        
-        DeltaTeclado delta;
+        public struct GPData {
+            public double lx, ly, rx, ry, zoom;
+            public void reset() { lx = ly = rx = ry = zoom = 0; }
+        }
 
-        // Teclado por defecto
-        VirtualKey Izquierda = VirtualKey.A;
-        VirtualKey Izquierda1 = VirtualKey.GamepadDPadLeft;
-        VirtualKey Derecha = VirtualKey.D;
-        VirtualKey Derecha1 = VirtualKey.GamepadDPadRight;
-        VirtualKey Arriba = VirtualKey.W;
-        VirtualKey Arriba1 = VirtualKey.GamepadDPadUp;
-        VirtualKey Abajo = VirtualKey.S;
-        VirtualKey Abajo1 = VirtualKey.GamepadDPadDown;
-        VirtualKey ZoomMas = VirtualKey.C;
-        VirtualKey ZoomMas1 = VirtualKey.GamepadRightShoulder;
-        VirtualKey ZoomMen = VirtualKey.Z;
-        VirtualKey ZoomMen1 = VirtualKey.GamepadLeftShoulder;
+        public GPData data;
 
+        public Controlador() {
+            Gamepad.GamepadAdded += (object sender, Gamepad e) => {
+                lock(Lock) {
+                    if(!Gamepads.Contains(e)) {
+                        Gamepads.Add(e);
+                        if(Gamepads.Count == 1) {
+                            mainGamepad = Gamepads[0];
+                        }
+                    }
+                }
+            };
 
-        //Varibles Gesto
-        public bool Gesto = false;
-        float TiempoGesto = 0;
-        int EstadoGesto = 0;
-
-
+            Gamepad.GamepadRemoved += (object sender, Gamepad e) => {
+                lock(Lock) {
+                    int i = Gamepads.IndexOf(e);
+                    if(i > -1) {
+                        if(mainGamepad == Gamepads[i]) {
+                            Gamepads.RemoveAt(i);
+                            mainGamepad = Gamepads[0];
+                        } else Gamepads.RemoveAt(i);
+                    }
+                }
+            };
+        }
 
         //Teclado de forma continua
-        public bool KeyIsDown(VirtualKey key)
-        {
-            var keystate = CoreWindow.GetForCurrentThread().GetKeyState(key);
-            return (keystate & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        private bool IsKeyDown(CoreWindow core, VirtualKey key) {
+            return (core.GetKeyState(key) & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
         }
 
-        public DeltaTeclado KeyContinuo()
-        { 
-            delta.X = 0.0; delta.Y = 0.0; delta.Z = 0.0;
-            
-            if (KeyIsDown(Izquierda) | KeyIsDown(Izquierda1)) delta.X = -1;
-            if (KeyIsDown(Derecha) | KeyIsDown(Derecha1)) delta.X = +1;
-            if (KeyIsDown(Arriba) | KeyIsDown(Arriba1)) delta.Y = -1;
-            if (KeyIsDown(Abajo) | KeyIsDown(Abajo1)) delta.Y = +1;
-            if (KeyIsDown(ZoomMas) | KeyIsDown(ZoomMas1)) delta.Z = +0.1;
-            if (KeyIsDown(ZoomMen) | KeyIsDown(ZoomMen1)) delta.Z = -0.1;
-            return delta;
+        public bool IsKeyDown(VirtualKey key) {
+            return IsKeyDown(CoreWindow.GetForCurrentThread(), key);
         }
 
-        //Keyboard por eventos
-        public DeltaTeclado KeyDown(KeyRoutedEventArgs e)
-        {
-            delta.X = 0.0;delta.Y = 0.0;delta.Z= 0.0;
-            if ((e.Key==Izquierda)| (e.Key == Izquierda1)) delta.X = -10;
-            if ((e.Key == Derecha) | (e.Key == Derecha1)) delta.X = +10;
-            if ((e.Key == Arriba) | (e.Key == Arriba1)) delta.Y = -10;
-            if ((e.Key == Abajo) | (e.Key == Abajo1)) delta.Y= +10;
-            if ((e.Key == ZoomMas) | (e.Key == ZoomMas1)) delta.Z = +0.1;
-            if ((e.Key == ZoomMen) | (e.Key == ZoomMen1)) delta.Z = -0.1;
-            return delta;    
-            
-        }
-        public Controlador ()
-        {
-            Gamepad.GamepadAdded += (object sender, Gamepad e) =>
-            {
-                // Check if the just-added gamepad is already in myGamepads;
-                // if it isn't, add it.
-                lock (myLock)
-                {
-                    bool gamepadInList = myGamepads.Contains(e);
-                    if (!gamepadInList)
-                    {
-                        myGamepads.Add(e);
-                        mainGamepad = myGamepads[0];
-                    }
-                }
-            };
-
-            Gamepad.GamepadRemoved += (object sender, Gamepad e) =>
-            {
-                lock (myLock)
-                {
-                    int indexRemoved = myGamepads.IndexOf(e);
-                    if (indexRemoved > -1)
-                    {
-                        if (mainGamepad == myGamepads[indexRemoved])
-                        {
-                            mainGamepad = null;
-                        }
-                        myGamepads.RemoveAt(indexRemoved);
-                    }
-                }
-            };
-        }
-        public void LeeMando()
-        {
-            if (mainGamepad != null)
-            {
-                prereading = reading;
+        public void Input() {
+            if(mainGamepad != null) {
                 reading = mainGamepad.GetCurrentReading();
             }
-        }
-        public bool DetectaGestosMando()
-        {
-            TiempoGesto = TiempoGesto * 0.9f;
-            if (TiempoGesto < 0.3)
-            { TiempoGesto = 0.0f; EstadoGesto = 0; Gesto = false; }
 
-            if ((reading.RightThumbstickX > 0.0) & (reading.RightThumbstickY > 0.0))
-            { EstadoGesto = 1; TiempoGesto = 1.0f; }
-
-            if ((EstadoGesto == 1) & (TiempoGesto > .3f) & (reading.RightThumbstickX > 0.0) & (reading.RightThumbstickY < 0.0))
-            { EstadoGesto = 2; TiempoGesto = 1.0f; }
-
-            if ((EstadoGesto == 2) & (TiempoGesto > .3f) & (reading.RightThumbstickX < 0.0) & (reading.RightThumbstickY < 0.0))
-            { EstadoGesto = 3; TiempoGesto = 1.0f; }
-
-            if ((EstadoGesto == 3) & (TiempoGesto > .3f) & (reading.RightThumbstickX < 0.0) & (reading.RightThumbstickY > 0.0))
-            { EstadoGesto = 0; TiempoGesto = 0.0f; Gesto = true; }
-
-            return Gesto;
-        }
-
-        public void ZMMando()
-        {
-            if (reading.RightThumbstickX < -0.1) reading.RightThumbstickX += 0.1;
-            else if (reading.RightThumbstickX > 0.1) reading.RightThumbstickX -= 0.1;
-            else reading.RightThumbstickX = 0;
-
-            if (reading.RightThumbstickY < -0.1) reading.RightThumbstickY += 0.1;
-            else if (reading.RightThumbstickY > 0.1) reading.RightThumbstickY -= 0.1;
-            else reading.RightThumbstickY = 0;
-        }
-
-        public void FeedBack()
-        {
-            if (mainGamepad != null)
-            {
-                // ... set vibration levels on vibration struct here
-                if ((reading.RightThumbstickX != 0) | (reading.RightThumbstickY != 0))
-                    if (reading.RightThumbstickX * reading.RightThumbstickX > reading.RightThumbstickY * reading.RightThumbstickY)
-                        vibration.RightMotor = reading.RightThumbstickX * reading.RightThumbstickX;
-                    else
-                        vibration.RightMotor = reading.RightThumbstickY * reading.RightThumbstickY;
-                else
-                    vibration.RightMotor = 0;
-
-                if ((reading.LeftTrigger != 0) | (reading.RightTrigger != 0))
-                    if (reading.LeftTrigger > reading.RightTrigger)
-                        vibration.LeftMotor = reading.LeftTrigger;
-                    else
-                        vibration.LeftMotor = reading.RightTrigger;
-                else
-                    vibration.LeftMotor = 0;
-                // copy the GamepadVibration struct to the gamepad
-                mainGamepad.Vibration = vibration;
+            data.reset(); kbInput = gpInput = mouseInput = false;
+            CoreWindow core = CoreWindow.GetForCurrentThread();
+            if(IsKeyDown(core, VirtualKey.W)) { data.ly -= 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.D)) { data.lx += 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.S)) { data.ly += 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.A)) { data.lx -= 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.Q)) { data.zoom -= 0.05; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.E)) { data.zoom += 0.05; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.GamepadRightShoulder)) { data.zoom += 0.05; gpInput = true; }
+            if(IsKeyDown(core, VirtualKey.GamepadLeftShoulder)) { data.zoom -= 0.05; gpInput = true; }
+            if(reading.LeftThumbstickX > 0.1 || reading.LeftThumbstickX < -0.1) {
+                data.lx += reading.LeftThumbstickX; gpInput = true;
             }
+            if(reading.LeftThumbstickY > 0.1 || reading.LeftThumbstickY < -0.1) {
+                data.ly -= reading.LeftThumbstickY; gpInput = true;
+            }
+            if(reading.RightThumbstickX > 0.1 || reading.RightThumbstickX < -0.1) {
+                data.rx += reading.RightThumbstickX; gpInput = true;
+            }
+            if(reading.RightThumbstickY > 0.1 || reading.RightThumbstickY < -0.1) {
+                data.ry -= reading.RightThumbstickY; gpInput = true;
+            }
+            previousCursor = cursor;
+            cursor = CoreWindow.GetForCurrentThread().PointerPosition;
+            mouseInput = cursor != previousCursor;
         }
     }
 }

@@ -56,7 +56,7 @@
                 HorizontalScrollBarVisibility="Visible" 
                 HorizontalScrollMode="Enabled" 
                 VerticalScrollMode="Enabled" 
-                IsTabStop="True"
+                IsTabStop="False"
                 TabIndex="0"
                 IsFocusEngagementEnabled="True">
                 <Grid>
