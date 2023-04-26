@@ -41,12 +41,11 @@ namespace Trabajo_DSI {
             id = ID;
             health = Unidad.Unidades[id].MaxHealth;
             unidad = Unidad.Unidades[id];
-            healthString = health + "/" + unidad.MaxHealth;
         }
 
         public string id { get; set; }
         public int health { get; set; }
         public Unidad unidad { get; }
-        public string healthString { get; set; }
+        public string healthString { get => health + "/" + unidad.MaxHealth; }
     }
 }

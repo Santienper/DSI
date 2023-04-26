@@ -22,15 +22,12 @@ namespace P4 {
         public Gamepad mainGamepad = null;
         //Lectura y escritura de los mandos
         private GamepadReading reading;
+
+        public double lx, ly, rx, ry, zoom;
         public Windows.Foundation.Point cursor, previousCursor;
         public bool gpInput, mouseInput, kbInput;
 
-        public struct GPData {
-            public double lx, ly, rx, ry, zoom;
-            public void reset() { lx = ly = rx = ry = zoom = 0; }
-        }
-
-        public GPData data;
+        public void reset() { lx = ly = rx = ry = zoom = 0; gpInput = mouseInput = kbInput = false; }
 
         public Controlador() {
             Gamepad.GamepadAdded += (object sender, Gamepad e) => {
@@ -71,27 +68,29 @@ namespace P4 {
                 reading = mainGamepad.GetCurrentReading();
             }
 
-            data.reset(); kbInput = gpInput = mouseInput = false;
+            reset();
             CoreWindow core = CoreWindow.GetForCurrentThread();
-            if(IsKeyDown(core, VirtualKey.W)) { data.ly -= 1; kbInput = true; }
-            if(IsKeyDown(core, VirtualKey.D)) { data.lx += 1; kbInput = true; }
-            if(IsKeyDown(core, VirtualKey.S)) { data.ly += 1; kbInput = true; }
-            if(IsKeyDown(core, VirtualKey.A)) { data.lx -= 1; kbInput = true; }
-            if(IsKeyDown(core, VirtualKey.Q)) { data.zoom -= 0.05; kbInput = true; }
-            if(IsKeyDown(core, VirtualKey.E)) { data.zoom += 0.05; kbInput = true; }
-            if(IsKeyDown(core, VirtualKey.GamepadRightShoulder)) { data.zoom += 0.05; gpInput = true; }
-            if(IsKeyDown(core, VirtualKey.GamepadLeftShoulder)) { data.zoom -= 0.05; gpInput = true; }
+            if(IsKeyDown(core, VirtualKey.W)) { ly -= 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.D)) { lx += 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.S)) { ly += 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.A)) { lx -= 1; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.Q)) { zoom -= 0.05; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.E)) { zoom += 0.05; kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.Up) || IsKeyDown(core, VirtualKey.Right) || IsKeyDown(core, VirtualKey.Down) || IsKeyDown(core, VirtualKey.Left)) { kbInput = true; }
+            if(IsKeyDown(core, VirtualKey.GamepadA) || IsKeyDown(core, VirtualKey.GamepadB)) { gpInput = true; }
+            if(IsKeyDown(core, VirtualKey.GamepadRightShoulder)) { zoom += 0.05; gpInput = true; }
+            if(IsKeyDown(core, VirtualKey.GamepadLeftShoulder)) { zoom -= 0.05; gpInput = true; }
             if(reading.LeftThumbstickX > 0.1 || reading.LeftThumbstickX < -0.1) {
-                data.lx += reading.LeftThumbstickX; gpInput = true;
+                lx += reading.LeftThumbstickX; gpInput = true;
             }
             if(reading.LeftThumbstickY > 0.1 || reading.LeftThumbstickY < -0.1) {
-                data.ly -= reading.LeftThumbstickY; gpInput = true;
+                ly -= reading.LeftThumbstickY; gpInput = true;
             }
             if(reading.RightThumbstickX > 0.1 || reading.RightThumbstickX < -0.1) {
-                data.rx += reading.RightThumbstickX; gpInput = true;
+                rx += reading.RightThumbstickX; gpInput = true;
             }
             if(reading.RightThumbstickY > 0.1 || reading.RightThumbstickY < -0.1) {
-                data.ry -= reading.RightThumbstickY; gpInput = true;
+                ry -= reading.RightThumbstickY; gpInput = true;
             }
             previousCursor = cursor;
             cursor = CoreWindow.GetForCurrentThread().PointerPosition;

@@ -92,11 +92,13 @@ namespace Trabajo_DSI {
             Image Imagen = new Image(); Imagen.Source = un.Source;
             Button Boton = new Button(); Imagen.Width = Imagen.Height = 30;
             Boton.Content = Imagen; Boton.Click += Button_Click;
-            Boton.Tag = new InstanciaUnidad(id);
             Boton.KeyDown += Entity_KeyDown; 
+            Boton.Tag = new InstanciaUnidad(id);
+
             CompositeTransform Transformacion = new CompositeTransform();
             Transformacion.TranslateX = 0.0; Transformacion.TranslateY = 0.0; Transformacion.Rotation = 0;
             Boton.RenderTransform = Transformacion;
+
             Mundo.Children.Add(Boton);
             Boton.SetValue(Canvas.LeftProperty, x);
             Boton.SetValue(Canvas.TopProperty, y);
@@ -117,10 +119,10 @@ namespace Trabajo_DSI {
         }
         private void Acciones_ItemClick(object sender, ItemClickEventArgs e){
             Unidad un = e.ClickedItem as Unidad;
-            if (control.gpInput==false)
-            {
-                Point cursor = control.cursor;
-                createEntity(un.id, cursor.X, cursor.Y);
+            if (control.gpInput) {
+                createEntity(un.id, control.cursor.X - 20, control.cursor.Y - 50);
+            } else {
+                createEntity(un.id, 50, 50);
             }
             
         }
@@ -175,21 +177,27 @@ namespace Trabajo_DSI {
             Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
         }
         private void UpdateUI() {
-            Mundo.XYFocusKeyboardNavigation = control.kbInput ? XYFocusKeyboardNavigationMode.Enabled : XYFocusKeyboardNavigationMode.Disabled;
             Button Entidad = FocusManager.GetFocusedElement() as Button;
+
+            if(control.gpInput) {
+                MiScroll.HorizontalScrollMode = ScrollMode.Disabled;
+                MiScroll.VerticalScrollMode = ScrollMode.Disabled;
+
+                Point cursor = control.cursor;
+                cursor.X += control.rx * 10 / MiScroll.ZoomFactor;
+                cursor.Y += control.ry * 10 / MiScroll.ZoomFactor;
+                CoreWindow.GetForCurrentThread().PointerPosition = cursor;
+            } else {
+                MiScroll.HorizontalScrollMode = ScrollMode.Enabled;
+                MiScroll.VerticalScrollMode = ScrollMode.Enabled;
+            }
 
             if(Entidad?.Parent == Mundo) {
                 CompositeTransform Transformacion = Entidad.RenderTransform as CompositeTransform;
-                Transformacion.TranslateX += control.data.lx * 10 / MiScroll.ZoomFactor;
-                Transformacion.TranslateY += control.data.ly * 10 / MiScroll.ZoomFactor;
-                if(control.gpInput) {
-                    Point cursor = control.cursor;
-                    cursor.X += control.data.rx * 10 / MiScroll.ZoomFactor;
-                    cursor.Y += control.data.ry * 10 / MiScroll.ZoomFactor;
-                    CoreWindow.GetForCurrentThread().PointerPosition = cursor;
-                }
+                Transformacion.TranslateX += control.lx * 10 / MiScroll.ZoomFactor;
+                Transformacion.TranslateY += control.ly * 10 / MiScroll.ZoomFactor;
                 Entidad.RenderTransform = Transformacion;
-                MiScroll.ChangeView(MiScroll.HorizontalOffset, MiScroll.VerticalOffset, MiScroll.ZoomFactor + (float)control.data.zoom);
+                MiScroll.ChangeView(MiScroll.HorizontalOffset, MiScroll.VerticalOffset, MiScroll.ZoomFactor + (float)control.zoom);
             }
         }
     }
