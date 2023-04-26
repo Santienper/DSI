@@ -28,7 +28,7 @@ namespace Trabajo_DSI {
             { "Oveja", new Unidad("Oveja", "Oveja", 50, "Assets\\oveja.jpg", new string[] { "Casa" }) },
             { "Soldado", new Unidad("Soldado", "Soldado", 100, "Assets\\soldado.jpg", new string[] { "HQ" }) },
             { "Funky", new Unidad("Funky", "Heroina", 200, "Assets\\funky heroina.jpg", new string[] { "Casa", "HQ" }) },
-            {"SpiderMan",new Unidad("SpiderMan","Spider-Man",400,"Assets\\SpiderManPeque.jpg",new string[]{"Oveja","Funky"}) },
+            {"SpiderMan",new Unidad("SpiderMan","Spider-Man",400,"Assets\\SpiderManPeque.jpg",new string[]{"Oveja","Funky", "CapitanA"}) },
             {"IronMan",new Unidad("IronMan","Iron Man",500,"Assets\\IronManPeque.jpg",new string[]{"Oveja","Funky", "BlackPanther"}) },
             {"CapitanA",new Unidad("CapitanA","Capitan América",400,"Assets\\CapAmericaPeque.jpg",new string[]{"Oveja","Funky", "AntMan"}) },
             {"AntMan",new Unidad("AntMan","Ant-Man",350,"Assets\\AntMan.jpg",new string[]{"Oveja","Funky","Casa"}) },

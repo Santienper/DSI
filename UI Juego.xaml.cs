@@ -56,7 +56,7 @@ namespace Trabajo_DSI {
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             createEntity("Casa", 50, 100);
-            //modo = (int)e.Parameter;
+            modo = (int)e.Parameter;
             timer.Start();
             base.OnNavigatedTo(e);
             
@@ -73,6 +73,7 @@ namespace Trabajo_DSI {
 
         private void Entity_KeyDown(object sender, KeyRoutedEventArgs e) {
             control.InvalidateKeys(e);
+            if (e.Key == VirtualKey.GamepadMenu) Frame.Navigate(typeof(Pausa), modo);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -116,12 +117,12 @@ namespace Trabajo_DSI {
         }
         private void Acciones_ItemClick(object sender, ItemClickEventArgs e){
             Unidad un = e.ClickedItem as Unidad;
-            if (control != null)
+            if (control.gpInput==false)
             {
                 Point cursor = control.cursor;
                 createEntity(un.id, cursor.X, cursor.Y);
             }
-           
+            
         }
 
         private void Map_DragOver(object sender, DragEventArgs e) {

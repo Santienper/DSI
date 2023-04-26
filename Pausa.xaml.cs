@@ -50,9 +50,21 @@ namespace Trabajo_DSI
             Frame.Navigate(typeof(Configuracion));
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        private async void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "¿Seguro que desea abandonar la partida?",
+                Content = "Los datos no guardados se perderán...",
+                MaxWidth = this.ActualWidth,
+                PrimaryButtonText = "Sí",
+                CloseButtonText = "No",
+            };
+            ContentDialogResult result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                Frame.Navigate(typeof(MainPage));
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

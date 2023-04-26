@@ -137,7 +137,6 @@
                     <Grid Grid.Column="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
                         <Grid>
@@ -151,7 +150,7 @@
                                 <TextBlock Text="{x:Bind selected.unidad.Nombre, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="19" Margin="4" Style="{StaticResource Arial}"/>
                             </Border>
                             <Border Grid.Row="1" BorderBrush="White" BorderThickness="0,0,2,0">
-                                <Image Grid.Row="1" Source="{x:Bind selected.unidad.Source, Mode=OneWay}" Stretch="Fill" Margin="5"/>
+                                <Image Grid.Row="1" Source="{x:Bind selected.unidad.Source, Mode=OneWay}" Margin="5"/>
                             </Border>
                             <Border Grid.Row="2" BorderBrush="White" BorderThickness="0,0,2,0">
                                 <ProgressBar  Margin="10" Maximum="{x:Bind selected.unidad.MaxHealth, Mode=OneWay}" Value="{x:Bind selected.health, Mode=OneWay}"/>
@@ -161,12 +160,12 @@
                                 <TextBlock Margin="5" Text="{x:Bind selected.healthString, Mode=OneWay}" FontSize="19" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Arial}"/>
                             </Border>
                         </Grid>
-                        <Border Grid.Column="1" BorderBrush="White" BorderThickness="0,0,2,0">
+                        <Border Grid.Column="1" BorderBrush="White" BorderThickness="0,0,0,0">
                             <GridView ItemsSource="{x:Bind Unidades}" Margin="10">
                                 <GridView.ItemTemplate>
                                     <DataTemplate x:DataType="local:InstanciaUnidad">
                                         <!--<TextBlock Text="{Binding Path=Source}"/>-->
-                                        <Image Source="{Binding Path=Source}" Width="40" Height="40"/>
+                                        <Image Source="{Binding Path=Source}" Width="90" Height="40"/>
                                     </DataTemplate>
                                 </GridView.ItemTemplate>
                             </GridView>
