@@ -73,50 +73,7 @@ namespace Trabajo_DSI {
         }
 
         private void Entity_KeyDown(object sender, KeyRoutedEventArgs e) {
-            Button MiEntidad = sender as Button;
-            CompositeTransform Transformacion = MiEntidad.RenderTransform as CompositeTransform;
-            double X = 0, Y = 0;
-            float zoom = 0;
-
-            switch (e.Key)
-            {
-                case VirtualKey.A: //movimiento a través de las teclas
-                case VirtualKey.GamepadRightThumbstickLeft:
-                    //X = -10;
-                    //break;
-                case VirtualKey.D:
-                case VirtualKey.GamepadRightThumbstickRight:
-                    //X = +10;
-                    //break;
-                case VirtualKey.W:
-                case VirtualKey.GamepadRightThumbstickUp:
-                    //Y = -10;
-                    //break;
-                case VirtualKey.S:
-                case VirtualKey.GamepadRightThumbstickDown:
-                    //Y = +10;
-                    //break;
-                case VirtualKey.GamepadLeftShoulder:
-                    //zoom -= 0.1f;
-                    //e.Handled = true;
-                    //break;
-                case VirtualKey.GamepadRightShoulder:
-                    //zoom += 0.1f;
-                    //e.Handled = true;
-                    //break;
-                case VirtualKey.GamepadView:
-                case VirtualKey.GamepadDPadUp:
-                case VirtualKey.GamepadDPadDown:
-                case VirtualKey.GamepadDPadLeft:
-                case VirtualKey.GamepadDPadRight:
-                    e.Handled = true;
-                    break;
-            }
-            Transformacion.TranslateX += X / MiScroll.ZoomFactor;
-            Transformacion.TranslateY += Y / MiScroll.ZoomFactor;
-            MiScroll.ChangeView(MiScroll.HorizontalOffset, MiScroll.VerticalOffset, MiScroll.ZoomFactor + zoom);
-            MiEntidad.RenderTransform = Transformacion;
-
+            control.InvalidateKeys(e);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -136,7 +93,7 @@ namespace Trabajo_DSI {
             Button Boton = new Button(); Imagen.Width = Imagen.Height = 30;
             Boton.Content = Imagen; Boton.Click += Button_Click;
             Boton.Tag = new InstanciaUnidad(id);
-            if (un.Nombre != "Casa") Boton.KeyDown += Entity_KeyDown; 
+            Boton.KeyDown += Entity_KeyDown; 
             CompositeTransform Transformacion = new CompositeTransform();
             Transformacion.TranslateX = 0.0; Transformacion.TranslateY = 0.0; Transformacion.Rotation = 0;
             Boton.RenderTransform = Transformacion;
@@ -213,6 +170,7 @@ namespace Trabajo_DSI {
             Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 0);
         }
         private void UpdateUI() {
+            Mundo.XYFocusKeyboardNavigation = control.kbInput ? XYFocusKeyboardNavigationMode.Enabled : XYFocusKeyboardNavigationMode.Disabled;
             Button Entidad = FocusManager.GetFocusedElement() as Button;
 
             if(Entidad?.Parent == Mundo) {

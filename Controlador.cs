@@ -21,7 +21,7 @@ namespace P4 {
         private List<Gamepad> Gamepads = new List<Gamepad>();
         public Gamepad mainGamepad = null;
         //Lectura y escritura de los mandos
-        public GamepadReading reading;
+        private GamepadReading reading;
         public Windows.Foundation.Point cursor, previousCursor;
         public bool gpInput, mouseInput, kbInput;
 
@@ -96,6 +96,32 @@ namespace P4 {
             previousCursor = cursor;
             cursor = CoreWindow.GetForCurrentThread().PointerPosition;
             mouseInput = cursor != previousCursor;
+        }
+
+        public void InvalidateKeys(KeyRoutedEventArgs e) {
+            switch(e.Key) {
+                case VirtualKey.W:
+                case VirtualKey.A:
+                case VirtualKey.S:
+                case VirtualKey.D:
+                case VirtualKey.GamepadDPadUp:
+                case VirtualKey.GamepadDPadDown:
+                case VirtualKey.GamepadDPadLeft:
+                case VirtualKey.GamepadDPadRight:
+                case VirtualKey.GamepadLeftThumbstickUp:
+                case VirtualKey.GamepadLeftThumbstickLeft:
+                case VirtualKey.GamepadLeftThumbstickDown:
+                case VirtualKey.GamepadLeftThumbstickRight:
+                case VirtualKey.GamepadRightThumbstickUp:
+                case VirtualKey.GamepadRightThumbstickLeft:
+                case VirtualKey.GamepadRightThumbstickDown:
+                case VirtualKey.GamepadRightThumbstickRight:
+                case VirtualKey.GamepadLeftShoulder:
+                case VirtualKey.GamepadRightShoulder:
+                case VirtualKey.GamepadView:
+                    e.Handled = true;
+                    break;
+            }
         }
     }
 }
